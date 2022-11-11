@@ -9,8 +9,8 @@
                 <my-search @click="changeSearch" />
                 <transition name="slide-fade">
                     <my-input
-                        v-show="isSearch"
-                        :v-model="searchText" 
+                        v-show="isSearchActive"
+                        v-model.trim="searchText" 
                         ref="searchinput"
                     />
                 </transition>
@@ -30,14 +30,18 @@ export default {
     data() {
         return {
             searchText: '',
-            isSearch: false,
+            isSearchActive: false,
         }
     },
     methods: {
         changeSearch(e) {
-             this.$refs.searchinput.$el.focus();
-             this.isSearch = !this.isSearch; 
-             this.searchText = '123'            
+            this.isSearchActive = !this.isSearchActive;
+            this.$nextTick(() => {
+                const searchinput = this.$refs.searchinput.$el;
+                searchinput.focus();    
+            })
+            if (!this.isSearchActive) { this.searchText = '' }
+                         
         },
     },
     watch: {
@@ -58,11 +62,13 @@ export default {
 
 .nav-lang-container {
     @include dflex(space-between, center);
+    height: 100%;
 }
 
 .lang-search-container {
     @include dflex(space-between, center);
     background-color: $colorgrey;
+    height: 80%;
 
     .hide {
         display: none;
