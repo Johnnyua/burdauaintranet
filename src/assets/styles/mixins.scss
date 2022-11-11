@@ -1,0 +1,5 @@
+@mixin dflex($juscon, $alitems) {
+    display: flex;
+    justify-content: $juscon;
+    align-items: $alitems;
+}
