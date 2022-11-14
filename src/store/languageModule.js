@@ -2,7 +2,7 @@
 
 export const languageModule = {
   state: () => ({
-    currentLanguage:'ua'
+    locale:localStorage.getItem('lang') || 'ua'
   }),
   getters: {
     

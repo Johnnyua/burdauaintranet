@@ -18,7 +18,7 @@ export default {
                 en: {
                     home: 'News',
                     about: 'About',
-                    documents: 'documents',
+                    documents: 'Documents',
                     services: 'Services',
                     employee: 'To Employee',
                 },
@@ -29,15 +29,13 @@ export default {
                     services: 'Сервіси',
                     employee: 'Співробітнику',
                 }
-            }
+            },
+            lang: 'ua'
         }
     },
-    props: {
-        lang: {
-            type: String,
-            default: 'ua'
-        }
-    }
+    mounted() {
+        this.lang = localStorage.getItem('lang') || 'ua';
+    },
 }
 </script>
 
