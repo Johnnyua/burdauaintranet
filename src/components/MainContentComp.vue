@@ -1,19 +1,25 @@
 <template>
     <main class="main-content-container">
-        <post-list class="main-content__list"
+        <post-list 
+            class="main-content__list"
+            :posts="posts"
         />
-        <div class="pagination">
-            <div class="pagination__previous">&lt;</div>
-            <div class="pagination__number">123</div>
-            <div class="pagination__next">&gt;</div>
-        </div>
+        <pagination-comp 
+            :pageNumbers="pageNumbers"/>
     </main>
 </template>
 
 <script>
 import PostList from "@/components/PostList.vue";
-    export default {
-    components: { PostList }    
+import PaginationComp from "@/components/PaginationComp.vue";
+export default {
+        data() {
+            return {
+                posts: [],
+                pageNumbers:[1,2,3]
+            }
+        },
+    components: { PostList, PaginationComp }    
     }
 </script>
 
@@ -33,4 +39,5 @@ import PostList from "@/components/PostList.vue";
     border: 3px #000 solid;
     height: 715px;
 }
+
 </style>
