@@ -12,12 +12,35 @@
 <script>
 import PostList from "@/components/PostList.vue";
 import PaginationComp from "@/components/PaginationComp.vue";
+import axios from "axios";
 export default {
         data() {
             return {
                 posts: [],
                 pageNumbers:[1,2,3]
             }
+    },
+        methods: {
+            loadPosts() {
+                const url = 'https://newsapi.org/v2/everything?' +
+                    'q=Apple&' +
+                    'sortBy=publishedAt&' +
+                    'apiKey=ad3124987f88443ea4bf7df20ac7cc98';
+                try {
+                    const response = await axios.get("",
+                        {
+                            params: {
+                                language: [en, it]
+                        }
+                        
+                    })    
+                } catch (error) {
+
+                }
+            }
+    },
+        mounted() {
+            this.loadPosts();
         },
     components: { PostList, PaginationComp }    
     }
