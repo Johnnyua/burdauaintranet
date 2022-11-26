@@ -2,45 +2,60 @@
     <main class="main-content-container">
         <post-list 
             class="main-content__list"
-            :posts="posts"
+            :posts="formatedPublishedDatePosts"
         />
         <pagination-comp 
-            :pageNumbers="pageNumbers"/>
+            :pageNumbers="totalPages"
+            :selectedPage="currentPage"
+            @clickOnNumber='changePage'/>
+            
     </main>
 </template>
 
 <script>
 import PostList from "@/components/PostList.vue";
 import PaginationComp from "@/components/PaginationComp.vue";
-import axios from "axios";
+import { getPosts } from "@/api/loadPosts";
+
 export default {
         data() {
             return {
                 posts: [],
-                pageNumbers:[1,2,3]
+                currentPage: 1,
+                limitOfPage: 3,
+                totalPages:0
             }
     },
         methods: {
-            loadPosts() {
-                const url = 'https://newsapi.org/v2/everything?' +
-                    'q=Apple&' +
-                    'sortBy=publishedAt&' +
-                    'apiKey=ad3124987f88443ea4bf7df20ac7cc98';
+            async loadPosts() {
                 try {
-                    const response = await axios.get("",
-                        {
-                            params: {
-                                language: [en, it]
-                        }
-                        
-                    })    
+                    const response = await getPosts();
+                    this.totalPages = Math.ceil(response.data.totalResults / this.limitOfPage);
+                    this.posts.push(...response.data.articles);
+                      
                 } catch (error) {
-
+                        
                 }
-            }
+            },
+            changePage(page) {
+                this.currentPage = page;
+            }       
     },
         mounted() {
             this.loadPosts();
+    },
+        computed: {
+            formatedPublishedDatePosts() {
+                return this.posts.map((item) => {
+                    const date = new Date(Date.parse(item.publishedAt));
+                    const postDay = date.getDate();
+                    const postMonth = date.getMonth();
+                    const postYear = date.getFullYear();
+            
+                    item.publishedAt = [postDay, postMonth, postYear].join('.');
+                    return item;
+                })
+            }
         },
     components: { PostList, PaginationComp }    
     }

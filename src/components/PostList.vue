@@ -2,7 +2,7 @@
     <section>
         <post-item
             v-for="post in posts" 
-            :key="post.id" 
+            :key="post.url" 
             class="list-item"
             :post="post"
         />
