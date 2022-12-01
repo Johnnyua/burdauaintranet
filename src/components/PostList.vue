@@ -1,17 +1,12 @@
 <template>
     <section class="main-content__list">
-        <post-item 
-            class="list__items" 
-            v-for="post in posts" 
-            :key="post.url" 
-            :post="post"
-            :classObject="classes"
-      >
-        <template #item-icon>
-            Open
-        </template>
-        </post-item>
-        
+        <transition-group name="list">
+            <post-item class="list__items" v-for="post in posts" :key="post.url" :post="post" :classObject="classObject">
+                <template #item-icon>
+                    <div style="opacity:1">Open</div>
+                </template>
+            </post-item>
+        </transition-group>
     </section>
 </template>
 
@@ -23,17 +18,11 @@ export default {
             type: Array,
             default: () => []
         },
-        
-    },
-    data() {
-        return {
-            classes: {
-                icon: ['active', 'block']
-            }
+        classObject: {
+            type: Object,
+            default: () => { } 
         }
-    },
-    created() {
-        console.log(this.classes);
+        
     },
     components: { PostItem },
 }
@@ -49,7 +38,7 @@ export default {
 @media screen and (min-width: 1024px) {
     .main-content__list {
         display: grid;
-        grid-template: 300px / 1fr 1fr 1fr;
+        grid-template: auto / 1fr 1fr 1fr;
         grid-template-areas: 'postbig postbig postnormal1' 'postnormal2 postnormal3 postnormal4';
         //grid-template-columns: repeat(auto-fit, 1fr);
         
@@ -76,5 +65,29 @@ export default {
                               
         }
     }
+}
+
+.list-item {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin-right: 10px;
+}
+
+.list-enter-active,
+.list-leave-active {
+    transition: all 1s ease-in-out;
+}
+
+.list-enter-from {
+    transform: translateX(2200px);
+}
+.list-leave-to {
+    opacity: 0;
+    transform: translateX(-1000px);
+}
+
+.list-move {
+    transition: transform 1s ease;
 }
 </style>

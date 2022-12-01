@@ -13,6 +13,5 @@ export async function getPosts(page = 1) {
   const response = await axios.get(url, {
       params: param,
     });
-  console.log(response);
     return response;
 }
