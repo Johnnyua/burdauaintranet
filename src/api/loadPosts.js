@@ -5,7 +5,7 @@ export async function getPosts(page = 1) {
     country: "us",
     category: "business",
     page:page,
-    pageSize: 3,
+    pageSize: 5,
     apiKey: "ad3124987f88443ea4bf7df20ac7cc98",
   };
 
@@ -13,5 +13,6 @@ export async function getPosts(page = 1) {
   const response = await axios.get(url, {
       params: param,
     });
+  console.log(response);
     return response;
 }

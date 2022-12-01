@@ -1,8 +1,7 @@
 <template>
     <main class="main-content-container">
         <post-list 
-            class="main-content__list"
-            :posts="formatedPublishedDatePosts"
+            :posts="formatedPublishedPosts"
         />
         <pagination-comp 
             :pageNumbers="totalPages"
@@ -45,7 +44,7 @@ export default {
             this.loadPosts();
     },
         computed: {
-            formatedPublishedDatePosts() {
+            formatedPublishedPosts() {
                 return this.posts.map((item) => {
                     const date = new Date(Date.parse(item.publishedAt));
                     const postDay = date.getDate();
@@ -53,6 +52,7 @@ export default {
                     const postYear = date.getFullYear();
             
                     item.publishedAt = [postDay, postMonth, postYear].join('.');
+                    item.description = item.description?.slice(0, 160) ?? 'No description...';
                     return item;
                 })
             }
@@ -70,12 +70,6 @@ export default {
     }
 }
 
-.main-content__list {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 50% 50%;
-    border: 3px #000 solid;
-    height: 715px;
-}
+
 
 </style>
