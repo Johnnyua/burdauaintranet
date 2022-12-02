@@ -30,7 +30,7 @@ export default {
 
 <style lang="scss" scoped>
 .main-content__list {
-    grid-template: 300px / 1fr;
+    grid-template: auto / 1fr;
     //grid-template-areas: 'postbig' 'postnormal' 'postnormal1';
 }
 

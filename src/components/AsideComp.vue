@@ -1,17 +1,34 @@
 <template>
     <aside class="main-side-container">
-       Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, architecto? Voluptates obcaecati quasi ducimus explicabo? Rem suscipit ratione minima cumque.   
+        <social-comp 
+            :socialUrl="companySocial">
+        </social-comp>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, architecto? Voluptates obcaecati quasi
+        ducimus explicabo? Rem suscipit ratione minima cumque.
     </aside>
 </template>
 
 <script>
-    export default {
-        
-    }
+import SocialComp from './SocialComp.vue';
+export default {
+    data() {
+        return {
+            companySocial: {
+                website: 'https://burda.ua/',
+                youtube: '',
+                facebook: '',
+                instagram: ''
+            }
+        }
+    },
+    components: { SocialComp }
+}
 </script>
 
 <style lang="scss" scoped>
-    .main-side-container {
-        max-width: 270px;
-    }
+.main-side-container {
+    width: 270px;
+    min-width: 270px;
+    padding: 0 0 0 10px;
+}
 </style>

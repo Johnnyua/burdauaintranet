@@ -21,8 +21,9 @@ export default {
   @include dflex(space-between, center);
   flex-direction: column;
   max-width: 1920px;
+  min-width: 320px;
   min-height: 100%;
-  margin: 0 auto;
+  margin: 20px auto;
   padding: 0 20px 0 20px;
 }
 </style>
