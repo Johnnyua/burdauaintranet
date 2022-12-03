@@ -1,10 +1,11 @@
 <template>
     <aside class="main-side-container">
         <social-comp 
+            class="side side__social"
             :socialUrl="companySocial">
         </social-comp>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, architecto? Voluptates obcaecati quasi
-        ducimus explicabo? Rem suscipit ratione minima cumque.
+         <div class="side side__list">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, architecto? Voluptates obcaecati quasi
+        ducimus explicabo? Rem suscipit ratione minima cumque.</div>
     </aside>
 </template>
 
@@ -27,8 +28,17 @@ export default {
 
 <style lang="scss" scoped>
 .main-side-container {
-    width: 270px;
-    min-width: 270px;
-    padding: 0 0 0 10px;
+    @include dflex(space-between, center);
+    flex-direction: column;
+    border: 1px solid #000;
+    max-width: 270px;
+    min-width: 170px;
+    height: 100%;
+    width: 100%;
+
+    .side {
+        flex: 1 1 50%;
+        width: 100%;
+    }
 }
 </style>

@@ -80,11 +80,11 @@ export default {
 }
 
 .list-enter-from {
-    transform: translateX(2200px);
+    transform: translateY(1000px);
 }
 .list-leave-to {
     opacity: 0;
-    transform: translateX(-1000px);
+    transform: translateY(-100px);
 }
 
 .list-move {

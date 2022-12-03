@@ -3,3 +3,10 @@
     justify-content: $juscon;
     align-items: $alitems;
 }
+
+@mixin before-after-line ($width, $height, $background) {
+  @extend %before-after-line;
+  width: $width;
+  height: $height;
+  background: $background; 
+}

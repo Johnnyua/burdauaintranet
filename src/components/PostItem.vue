@@ -1,5 +1,5 @@
 <template>
-    <div class="item" :class="classObject.item">
+ <div class="item" :class="classObject.item">
         <div v-if="(post.urlToImage !== '' && post.urlToImage !== null)" class="item__img" :class="classObject.itemImg">
             <img :src="post.urlToImage" alt="News photo">
         </div>
@@ -97,4 +97,5 @@ export default {
 //     opacity: 0.25;
 //     text-align: center; 
 // }
+
 </style>

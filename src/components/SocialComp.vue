@@ -27,6 +27,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.social-container {
+    background-color: $colorgrey;
+}
 .item__galery {
     position: relative;
     height: 32px;

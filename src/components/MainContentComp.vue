@@ -5,6 +5,7 @@
             :classObject="classes"
         />
         <pagination-comp 
+            v-if="!isLoading"
             :pageNumbers="totalPages"
             :selectedPage="currentPage"
             @clickOnNumber='changePage'/>
@@ -22,15 +23,17 @@ export default {
             return {
                 posts: [],
                 currentPage: 1,
-                limitOfPage: 3,
+                limitOfPage: 5,
                 totalPages: 0,
+                isLoading: true,
                 classes: {
                     item: 'post-item',
                     itemImg: 'post__img',
                     itemDate: 'post__date',
                     itemContent: 'post__content',
                     itemIcon: 'post__icon',
-                    itemTitle: 'post_title'
+                    itemTitle: 'post_title',
+                    itemDescription: 'post_description'
                 }
             }
     },
@@ -51,7 +54,7 @@ export default {
             }       
     },
         mounted() {
-            this.loadPosts();
+            // this.loadPosts();
     },
         computed: {
             formatedPublishedPosts() {
@@ -86,12 +89,12 @@ export default {
 <style lang="scss" scoped>
 .main-content-container {
     padding: 0 0 0 44px;
+    margin: 0 0 10px 0;
     width: 100%;
+    height: 100%;
+    
     .pagination {
         @include dflex(space-between, center);
     }
 }
-
-
-
 </style>

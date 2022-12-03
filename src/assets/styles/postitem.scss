@@ -7,11 +7,19 @@
     &:nth-child(even) {
         background-color: $colordarkblue;
         color: $colorwhite;
+        .post_title::after {
+            @include before-after-line(30%, 2px, $colorwhite);
+            margin: 1em 0 0 0;
+        }
     }
 
     &:nth-child(odd) {
         background-color: $colorwhite;
         color: $colordarkblue;
+        .post_title::after {
+            @include before-after-line(30%, 2px, $colordarkblue);
+            margin: 1em 0 0 0;
+        }
     }
 
     &:not(:first-child) {
@@ -37,8 +45,9 @@
     width: 100%;
     min-height: 180px;
     position: relative;
+    padding: 0 0 0 0;
 
-    .img {
+    img {
             position: absolute;
             top: 0;
             left: 0;
@@ -60,6 +69,13 @@
     font-weight: 600;
     font-size: 1.5rem;
     line-height: 1.25;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.post_description {
+    padding: 10px 0 0 0;
 }
 
 .post__icon {

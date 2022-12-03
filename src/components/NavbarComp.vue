@@ -49,12 +49,8 @@ export default {
         margin: 0 60px 0 0;
         font-weight: 700;
         &::after {
-            content: '';
-                display: block;
-                width: 0;
-                height: 2px;
-                background: $colordarkblue;
-                transition: width .3s;
+            @include before-after-line(0, 2px, $colordarkblue);
+            transition: width .3s;
         }
         &:hover::after {
             width: 50%;
