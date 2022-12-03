@@ -40,7 +40,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/styles/mixins.scss";
     .nav-bar {
         @include dflex(flex-end, center);
         margin: 0 0 0 20px;

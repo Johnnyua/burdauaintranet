@@ -42,9 +42,10 @@ export default {
                 this.totalPages = Math.ceil(response.data.totalResults / this.limitOfPage);
                 this.posts.push(...response.data.articles);
                 this.isLoading = false;
+                scrollTo(0, 0);
 
             } catch (error) {
-
+                console.log(error.message);
             }
         },
         changePage(page) {

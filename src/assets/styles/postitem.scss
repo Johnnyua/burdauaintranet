@@ -24,15 +24,18 @@
         }
     }
 
-    @media screen and (min-width: 1024px) {
+    @media screen and (min-width: 1200px) {
     &:not(:first-child) {
         flex-direction: column;
-        
     }
 }
 
     &:first-child .post__img {
         height: 100%;
+    }
+
+    .post__img {
+        flex: 0 0 33.333%;
     }
 
     .post__date {

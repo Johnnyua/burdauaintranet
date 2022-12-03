@@ -14,6 +14,7 @@
 
 <style lang="scss" scoped>
 .logo {
+    cursor: pointer;
     max-width: 150px;
 }
 </style>

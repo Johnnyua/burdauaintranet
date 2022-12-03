@@ -1,10 +1,8 @@
 <template>
     <header class="main-header">
-        <div>
-            <logo-comp></logo-comp>
-        </div>
+        <logo-comp class="header__logo"></logo-comp>
         <div class="nav-lang-container">
-            <NavbarComp></NavbarComp>
+            <NavbarComp class="navbar-container"></NavbarComp>
             <div class="lang-search-container">
                 <my-search @click="changeSearch" />
                 <transition name="slide-fade">
@@ -58,6 +56,17 @@ export default {
     @include dflex(space-between, center);
     min-height: 70px;
     width: 100%;
+}
+
+@media screen and (max-width:1255px) {
+    .navbar-container {
+        flex-direction: column;
+    }
+}
+
+.header__logo {
+    flex: 1 1 33.333%;
+    max-width: 270px;
 }
 
 .nav-lang-container {

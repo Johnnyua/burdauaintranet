@@ -1,26 +1,22 @@
 <template>
-    <div class="pagination">
-        <div class="pagination__previous">
-            <div class="arrow">
+    <div class="pagination-container">
+        <div class="pagination first">
+            <!-- <div class="arrow">
                 <i>&lt;</i>
-            </div>
-            <div class="line"></div>
+            </div> -->
+            <!-- <div class="line"></div> -->
         </div>
         <ul class="pagination__number list">
-            <li 
-                class="list__item" 
-                :class="{ active: pageNumber === selectedPage}"
-                v-for="pageNumber in pages" 
-                :key="pageNumber"
-                @click="$emit('clickOnNumber', pageNumber)">
+            <li class="list__item" :class="{ active: pageNumber === selectedPage }" v-for="pageNumber in pages"
+                :key="pageNumber" @click="$emit('clickOnNumber', pageNumber)">
                 {{ pageNumber }}
             </li>
         </ul>
-        <div class="pagination__next">
-            <div class="arrow">
+        <div class="pagination last">
+            <!-- <div class="arrow">
                 <i>&gt;</i>
-            </div>
-            <div class="line"></div>
+            </div> -->
+            <!-- <div class="line"></div> -->
         </div>
     </div>
 </template>
@@ -29,7 +25,7 @@
 export default {
     data() {
         return {
-            numShown: 10     
+            numShown: 10
         }
     },
     props: {
@@ -50,13 +46,14 @@ export default {
             first = Math.max(first, 1);
             first = Math.min(first, this.pageNumbers - numShown + 1);
             return [...Array(numShown)].map((k, i) => i + first);
-        }    
+        }
     },
 }
 </script>
 
 <style lang="scss" scoped>
-.pagination {
+.pagination-container {
+    @include dflex(space-between, center);
     padding: 5px;
 }
 
@@ -76,42 +73,67 @@ export default {
         background-color: $colordarkblue;
         color: $colorwhite;
     }
-    &.active{
+
+    &.active {
         background-color: $colordarkblue;
         color: $colorwhite;
         border-radius: 50%;
     }
 }
 
-.pagination__previous,
-.pagination__next {
+.pagination {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border: 1.5px solid $colordarkblue;
+    border-radius: 50%;
 
-    .arrow {
-        display: inline-block;
-        width: 3em;
-        height: 3em;
-        border: 1.5px $colordarkblue solid;
-        border-radius: 50%;
-        text-align: center;
-        position: relative;
 
-        i {
-            display: inline-block;
-            text-align: center;
-            margin-top: 0.625em;
+    &::after,
+    &::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        margin-top: -0.5em;
+        display: block;
+        width: 10px;
+        height: 10px;
+        border-top: 1.5px solid $colorblue;
+        border-left: 1.5px solid $colorblue;
+    }
+
+
+
+    &.first {
+
+        &::after,
+        &::before {
+            transform: rotate(-45deg);
+        }
+
+        &::before {
+            left: 21px;
+        }
+
+        &::after {
+            left: 11px;
         }
     }
 
-}
+    &.last {
 
-.pagination__previous .line,
-.pagination__next .line {
-    //position: absolute;
-    //top: 50%;
-    display: inline-block;
-    border: 1.5px $colordarkblue solid;
-    max-width: 7em;
-    width: 7em;
-    background: $colordarkblue;
+        &::after,
+        &::before {
+            transform: rotate(135deg);
+        }
+
+        &::before {
+            right: 11px;
+        }
+
+        &::after {
+            right: 21px;
+        }
+    }
 }
 </style>
