@@ -4,7 +4,9 @@
             class="side side__social"
             :socialUrl="companySocial">
         </social-comp>
-         <div class="side side__list">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, architecto? Voluptates obcaecati quasi
+         <div 
+            class="side side__list" 
+            style="background-color: pink;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, architecto? Voluptates obcaecati quasi
         ducimus explicabo? Rem suscipit ratione minima cumque.</div>
     </aside>
 </template>

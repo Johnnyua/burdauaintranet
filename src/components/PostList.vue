@@ -35,7 +35,7 @@ export default {
 }
 
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1200px) {
     .main-content__list {
         display: grid;
         grid-template: auto / 1fr 1fr 1fr;

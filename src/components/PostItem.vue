@@ -1,5 +1,5 @@
 <template>
- <div class="item" :class="classObject.item">
+ <article class="item" :class="classObject.item">
         <div v-if="(post.urlToImage !== '' && post.urlToImage !== null)" class="item__img" :class="classObject.itemImg">
             <img :src="post.urlToImage" alt="News photo">
         </div>
@@ -13,7 +13,7 @@
       <div class="item__icon" :class="classObject.itemIcon">
         <slot name="item-icon"></slot>
       </div>
-    </div>
+    </article>
 </template>
 
 <script>
@@ -33,7 +33,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// .item {
+ .item {
+    height: 100%;
+    width: 100%;
+ }
 //     @include dflex(space-between, center);
 //     border: 10px $colorblack solid;
 //     position: relative;
