@@ -29,10 +29,14 @@ export default {
 .social-container {
     @include dflex(center, center);
     background-color: $colorgrey;
+    flex: 0 1 33%;
+    max-height: 320px;
 }
-
+.side__list {
+    flex: 1 1 67%;
+}
 .side {
-    flex: 1 1 50%;
+    
     width: 100%;
 }
 </style>

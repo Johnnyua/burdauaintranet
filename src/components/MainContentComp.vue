@@ -1,6 +1,10 @@
 <template>
     <main >
-        <post-list :posts="formatedPublishedPosts" :classObject="classes" />
+        <post-list 
+            :posts="formatedPublishedPosts" 
+            :classObject="classes"
+            @openPost="openPost"
+            />
         <pagination-comp 
             v-if="!isLoading" 
             :pageNumbers="totalPages" 
@@ -53,6 +57,10 @@ export default {
             } catch (error) {
                 console.log(error.message);
             }
+        },
+        openPost(post) {
+            console.log(post.content);
+            // location.href = post.url;
         },
         changePage(page) {
             this.currentPage = page;

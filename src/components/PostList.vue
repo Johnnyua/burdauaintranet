@@ -1,7 +1,14 @@
 <template>
     <section class="main-content__list">
         <transition-group name="list">
-            <post-item class="list__items" v-for="post in posts" :key="post.url" :post="post" :classObject="classObject">
+            <post-item 
+                class="list__items" 
+                :classObject="classObject"
+                v-for="post in posts" 
+                :key="post.url" 
+                :post="post" 
+                @openPost="$emit('openPost', post)"
+                >
                 <template #item-icon>
                     <div style="opacity:1">Open</div>
                 </template>
@@ -13,6 +20,7 @@
 <script>
 import PostItem from "./PostItem.vue";
 export default {
+    emits: ['openPost'],
     props: {
         posts: {
             type: Array,

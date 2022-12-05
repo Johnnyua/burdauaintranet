@@ -40,7 +40,7 @@ export default {
             default: 0
         }
     },
-    emits: ['clickOnNumber'],
+    emits: ['clickOnNumber', 'clickLastPage', 'clickFirstPage'],
     created() {
         window.addEventListener("resize", this.resizeWindow);
     },

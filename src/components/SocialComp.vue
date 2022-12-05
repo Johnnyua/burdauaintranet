@@ -13,6 +13,7 @@
             <li class="item__galery">
                 <a :href="socialUrl.instagram" class="app-icon icon-instagram" target="_blank"></a>
             </li>
+            
         </ul>
     </div>
 </template>
@@ -34,6 +35,8 @@ export default {
 .social-list {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: max-content;
+
 
     .item__galery {
         @include dflex(center, center);
@@ -76,5 +79,11 @@ export default {
 .icon-instagram {
     background: url(@/assets/img/instagram_icon.png);
     background-size: cover;
+}
+
+@media screen and (max-width: 550px) {
+    .social-list {
+            @include dflex(center, center);
+    }
 }
 </style>
