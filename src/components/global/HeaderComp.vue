@@ -54,6 +54,7 @@ export default {
 <style lang="scss" scoped>
 .main-header {
     @include dflex(space-between, center);
+    margin: 0 0 20px 0;
     min-height: 70px;
     width: 100%;
 }

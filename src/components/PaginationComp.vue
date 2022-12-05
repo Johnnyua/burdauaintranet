@@ -1,22 +1,24 @@
 <template>
     <div class="pagination-container">
-        <div class="pagination first">
-            <!-- <div class="arrow">
-                <i>&lt;</i>
-            </div> -->
-            <!-- <div class="line"></div> -->
+        <div 
+            class="pagination first"
+            @click="$emit('clickFirstPage', pageFirst)"
+            >
         </div>
         <ul class="pagination__number list">
-            <li class="list__item" :class="{ active: pageNumber === selectedPage }" v-for="pageNumber in pages"
-                :key="pageNumber" @click="$emit('clickOnNumber', pageNumber)">
+            <li 
+                class="list__item" 
+                :class="{ active: pageNumber === selectedPage }" 
+                v-for="pageNumber in pages"
+                :key="pageNumber" 
+                @click="$emit('clickOnNumber', pageNumber)"
+                >
                 {{ pageNumber }}
             </li>
         </ul>
-        <div class="pagination last">
-            <!-- <div class="arrow">
-                <i>&gt;</i>
-            </div> -->
-            <!-- <div class="line"></div> -->
+        <div 
+            class="pagination last"
+            @click="$emit('clickLastPage', pageLast)">
         </div>
     </div>
 </template>
@@ -39,6 +41,24 @@ export default {
         }
     },
     emits: ['clickOnNumber'],
+    created() {
+        window.addEventListener("resize", this.resizeWindow);
+    },
+    destroyed() {
+        window.removeEventListener("resize", this.resizeWindow);   
+    },
+    mounted() {
+        if (innerWidth < 870) { this.numShown = 5 };
+    },
+    methods: {
+        resizeWindow() {
+            if (innerWidth < 870) {
+                this.numShown = 5
+            } else {
+                this.numShown = 10    
+            };    
+        }
+    },
     computed: {
         pages() {
             const numShown = Math.min(this.numShown, this.pageNumbers);

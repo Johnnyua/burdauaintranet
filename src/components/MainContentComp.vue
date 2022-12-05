@@ -1,8 +1,14 @@
 <template>
-    <main class="main-content-container">
+    <main >
         <post-list :posts="formatedPublishedPosts" :classObject="classes" />
-        <pagination-comp v-if="!isLoading" :pageNumbers="totalPages" :selectedPage="currentPage"
-            @clickOnNumber='changePage' />
+        <pagination-comp 
+            v-if="!isLoading" 
+            :pageNumbers="totalPages" 
+            :selectedPage="currentPage"
+            @clickOnNumber="changePage"
+            @clickFirstPage="jumpToFirstPage" 
+            @clickLastPage="jumpToLastPage"
+            />
         <div 
             v-if="isLoading" 
             class="loader"></div>
@@ -50,7 +56,13 @@ export default {
         },
         changePage(page) {
             this.currentPage = page;
-        }
+        },
+        jumpToFirstPage() {
+            this.currentPage = 1;
+        },
+        jumpToLastPage() {
+            this.currentPage = this.totalPages;
+        },
     },
     mounted() {
         this.loadPosts();
@@ -86,18 +98,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.main-content-container {
-    position: relative;
-    padding: 0 0 0 44px;
-    margin: 0 0 10px 0;
-    width: 100%;
-    height: 100%;
-
-    .pagination {
-        @include dflex(space-between, center);
-    }
-}
-
 .loader {
     position: absolute;
     top: 30%;
