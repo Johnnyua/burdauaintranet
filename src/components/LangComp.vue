@@ -19,14 +19,14 @@
 export default {
     data() {
         return {
-            selectedLang: undefined
+            selectedLang: undefined,
         }
     },
     methods: {
         changeLanguage(e) {
             this.selectedLang = e.target.value;
             localStorage.setItem('lang', this.selectedLang);
-            window.location.reload();
+            // window.location.reload();
         }
     },
     mounted() {

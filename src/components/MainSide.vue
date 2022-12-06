@@ -1,10 +1,12 @@
 <template>
     <aside>
-        <social-comp class="social-container side" :socialUrl="companySocial">
-        </social-comp>
-        <v-carousel 
-            class="side carousel"
-            :items="carouselItems"></v-carousel>
+        <social-comp class="social-container side" :socialUrl="companySocial" />
+        <div class="carousel-container">
+            <div class="carousel__title"></div>
+            <v-carousel class="side carousel" :items="carouselItems" />
+            <my-button>{{}}</my-button>
+        </div>
+        
     </aside>
 </template>
 

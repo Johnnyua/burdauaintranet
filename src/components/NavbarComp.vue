@@ -1,7 +1,7 @@
 <template>
     <nav class="nav-bar">
         <div class="nav-bar__list">
-            <my-button class="nav-bar__item" @click="$router.push('/')">{{namePage[lang].home}}</my-button>
+            <my-button class="nav-bar__item" @click="$router.push('/')">{{namePage[this.lan].home}}</my-button>
             <my-button class="nav-bar__item" @click="$router.push('/about')">{{ namePage[lang].about }}</my-button>
             <my-button class="nav-bar__item" @click="$router.push('/documents')">{{ namePage[lang].documents }}</my-button>
             <my-button class="nav-bar__item" @click="$router.push('/services')">{{ namePage[lang].services }}</my-button>
@@ -30,7 +30,7 @@ export default {
                     employee: 'Співробітнику',
                 }
             },
-            lang: 'ua'
+            lang: this.lan,
         }
     },
     mounted() {

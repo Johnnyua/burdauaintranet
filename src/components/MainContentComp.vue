@@ -59,8 +59,7 @@ export default {
             }
         },
         openPost(post) {
-            console.log(post.content);
-            // location.href = post.url;
+            location.href = post.url;
         },
         changePage(page) {
             this.currentPage = page;
@@ -74,6 +73,7 @@ export default {
     },
     mounted() {
         this.loadPosts();
+        console.log(this.lang);
     },
     computed: {
         formatedPublishedPosts() {

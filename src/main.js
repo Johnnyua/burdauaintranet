@@ -26,6 +26,8 @@ directives.forEach((directive) => {
   app.directive(directive.name, directive);
 });
 
+app.config.globalProperties.lan = localStorage.getItem("lang") || 'ua';
+
 app
     .use(store)
     .use(router)

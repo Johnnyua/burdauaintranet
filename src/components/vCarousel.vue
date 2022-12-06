@@ -1,6 +1,7 @@
 <template>
     <div>
-        <v-carousel-item 
+        <v-carousel-item
+        class="carousel__item" 
         v-for="item in items"
         :key="item.id"/>
     </div>
@@ -10,9 +11,15 @@
 export default {
     name: 'vCarousel',
     props: {
-        items: {
-            type: Array,
-            default: () => []
+        carouselItems: {
+            title: {
+                type: String,
+                default: ''
+            },
+            items: {
+                type: Array,
+                default: () => []
+            }
         }
     }
 }
