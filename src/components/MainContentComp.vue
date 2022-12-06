@@ -89,7 +89,8 @@ export default {
                 } else {
                     item.description = item.description?.slice(0, 100) ?? 'No description...';
                 }
-                item.title = item.description?.slice(0, 20).toUpperCase();
+                const title = item.title?.split(' ').slice(0, 5).join(' ').toUpperCase();
+                item.title = title.replace(/,\s*$/, "");
 
                 return item;
             })

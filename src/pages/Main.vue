@@ -1,16 +1,16 @@
 <template>
     <div class="main-container">
         <main-content-comp class="main-content-container" />
-        <aside-comp class="main-side-container"></aside-comp>
+        <main-side class="main-side-container"></main-side>
     </div>
 
 </template>
 
 <script>
 import MainContentComp from "@/components/MainContentComp.vue";
-import AsideComp from "@/components/AsideComp.vue";
+import MainSide from "@/components/MainSide.vue";
 export default {
-    components: { MainContentComp, AsideComp }
+    components: { MainContentComp, MainSide }
 }
 </script>
 

@@ -1,17 +1,15 @@
 <template>
   <div class="wrapper">
-    <header-comp></header-comp>
+    <v-header />
     <router-view></router-view>
-    <footer-comp 
+    <v-footer 
       :copyrights="copyrights"
       :cookiesPolicy="cookiesPolicy">
-    </footer-comp>
+    </v-footer>
 </div>
 </template>
 
 <script>
-import HeaderComp from '@/components/global/HeaderComp.vue';
-import FooterComp from '@/components/global/FooterComp.vue';
 export default {
   data() {
     return {
@@ -26,9 +24,6 @@ export default {
     this.cookiesPolicy.link = '#';
     this.cookiesPolicy.text = 'cookies';
   },
-  components: {
-    HeaderComp, FooterComp
-  }
 }
 </script>
 

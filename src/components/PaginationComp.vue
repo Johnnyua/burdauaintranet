@@ -1,7 +1,7 @@
 <template>
     <div class="pagination-container">
         <div 
-            class="pagination first"
+            class="pagination-arrow first"
             @click="$emit('clickFirstPage', pageFirst)"
             >
         </div>
@@ -17,7 +17,7 @@
             </li>
         </ul>
         <div 
-            class="pagination last"
+            class="pagination-arrow last"
             @click="$emit('clickLastPage', pageLast)">
         </div>
     </div>
@@ -101,13 +101,12 @@ export default {
     }
 }
 
-.pagination {
+.pagination-arrow {
     position: relative;
     width: 40px;
     height: 40px;
     border: 1.5px solid $colordarkblue;
     border-radius: 50%;
-
 
     &::after,
     &::before {
@@ -138,6 +137,9 @@ export default {
         &::after {
             left: 11px;
         }
+        &:hover {
+            transform: translateX(-5px);
+        }
     }
 
     &.last {
@@ -154,6 +156,9 @@ export default {
         &::after {
             right: 21px;
         }
+                &:hover {
+                    transform: translateX(5px);
+                }
     }
 }
 </style>

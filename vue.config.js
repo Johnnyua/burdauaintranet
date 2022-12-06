@@ -11,4 +11,7 @@ module.exports = {
       },
     },
   },
+  devServer: {
+    proxy: "https://xsgames.co",
+  },
 };
