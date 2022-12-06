@@ -47,8 +47,12 @@ export default {
         width: 32px;
         margin: 20px;
         padding: 25px;
+        box-shadow: 0px 0px 0px $colorgrey;
         a {
             border-radius: 50%;
+        }
+        &:hover {
+            background-color: $colorblue;
         }
     }
 }

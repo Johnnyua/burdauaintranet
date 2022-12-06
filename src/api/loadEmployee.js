@@ -7,7 +7,7 @@ export async function loadEmployee() {
     const response = await axios.get(url);
     return response;  
   } catch (error) {
-      console.log(error.message);  
+      console.error(error.message);  
   }
     return false;
 }

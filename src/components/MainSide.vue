@@ -30,12 +30,13 @@ export default {
             this.carouselItems.push(...employee.data);
 
             this.carouselItems.map(async (item) => {
-                const avatarUrl = await generateAvatar({ gender: 'male' });
-                item.avatar = avatarUrl;
-                console.log(avatarUrl);
+                const avatarIndex = Math.ceil(Math.random() * 78);
+                const avatarUrl = await generateAvatar(avatarIndex);
+                item.avatar = avatarUrl.request.responseURL;
+                console.log(item.avatar);
                 return item;
             })
-            console.log(this.carouselItems);
+            // console.log(this.carouselItems);
         }    
     },
     mounted() {
