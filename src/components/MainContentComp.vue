@@ -73,7 +73,6 @@ export default {
     },
     mounted() {
         this.loadPosts();
-        console.log(this.lang);
     },
     computed: {
         formatedPublishedPosts() {

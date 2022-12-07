@@ -1,4 +1,5 @@
 import { createApp } from "vue";
+import { ref } from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
@@ -26,7 +27,10 @@ directives.forEach((directive) => {
   app.directive(directive.name, directive);
 });
 
-app.config.globalProperties.lan = localStorage.getItem("lang") || 'ua';
+// ================== Global variable for change language and translate ======================== \\
+const lang = ref(localStorage.getItem("lang") || 'ua');
+app.config.globalProperties.$lang = lang;
+// ================== End ======================== \\
 
 app
     .use(store)

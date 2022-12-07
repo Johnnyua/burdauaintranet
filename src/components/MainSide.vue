@@ -1,12 +1,16 @@
 <template>
     <aside>
         <social-comp class="social-container side" :socialUrl="companySocial" />
-        <div class="carousel-container">
-            <div class="carousel__title"></div>
-            <v-carousel class="side carousel" :items="carouselItems" />
-            <my-button>{{}}</my-button>
+        <div class="carousel-container side">
+            <div class="carousel__title">{{ carousel.title[$lang.value] }}</div>
+            <v-carousel 
+                v-if="(carouselItemsWithAvatar.length > 0)"
+                class="carousel__items" 
+                :carouselItems="carouselItemsWithAvatar" />
+            <div v-else class="carousel__error">{{ carousel.error[$lang.value] }}</div>
+            <my-button class="carousel__button">{{ carousel.button[$lang.value] }}</my-button>
         </div>
-        
+
     </aside>
 </template>
 
@@ -23,26 +27,43 @@ export default {
                 facebook: '',
                 instagram: ''
             },
-            carouselItems: [],
+            carousel: {
+                title: {
+                    en: 'Birsdays',
+                    ua: 'Дні народження'
+                },
+                button: {
+                    en: 'Congratulate',
+                    ua: 'Привітати'
+                },
+                error: {
+                    en: 'No birsdays in this period',
+                    ua: 'В даному періоді немає днів народження'
+                },
+                items: [],
+            }
         }
     },
     methods: {
         async loadCarouselItems() {
             const employee = await loadEmployee();
-            this.carouselItems.push(...employee.data);
+            this.carousel.items.push(...employee.data);
 
-            this.carouselItems.map(async (item) => {
+
+        }
+    },
+    computed: {
+        carouselItemsWithAvatar() {
+            return [...this.carousel.items].map(async (item) => {
                 const avatarIndex = Math.ceil(Math.random() * 78);
                 const avatarUrl = await generateAvatar(avatarIndex);
                 item.avatar = avatarUrl.request.responseURL;
-                console.log(item.avatar);
                 return item;
-            })
-            // console.log(this.carouselItems);
-        }    
+            });
+        }
     },
     mounted() {
-        this.loadCarouselItems();    
+        this.loadCarouselItems();
     },
     components: { SocialComp }
 }
@@ -55,12 +76,42 @@ export default {
     flex: 0 1 33%;
     max-height: 320px;
 }
-.carousel {
+
+.side {
+    width: 100%;
+}
+
+.carousel-container {
+    @include dflex(space-between, center);
+    flex-direction: column;
     flex: 1 1 67%;
     background-color: $colorpink;
+    padding: 1em;
 }
-.side {
-    
-    width: 100%;
+
+.carousel__title {
+    font-size: 1.3rem;
+    font-weight: 700; 
+    line-height: 1.5;
+    text-transform: uppercase;
+    &::after {
+       @include before-after-line (3em, 2px, $colorblack);
+       margin: 0.5em 0;
+    } 
+}
+
+.carousel__items {
+    border: 1px solid #000;
+    border-radius: 110px;
+    width: 80%;
+    height: 150%;
+    max-height: 285px;
+}
+.carousel__button {
+    background-color: $colorblue;
+    border-radius: 2em;
+    color: $colorwhite;
+    max-width: 10em;
+    padding: 6px 22px;
 }
 </style>

@@ -43,8 +43,8 @@ export default {
         border: 1px solid $colorwhite;
         border-radius: 50%;
         position: relative;
-        height: 32px;
-        width: 32px;
+        max-height: 32px;
+        max-width: 32px;
         margin: 20px;
         padding: 25px;
         box-shadow: 0px 0px 0px $colorgrey;
@@ -88,6 +88,12 @@ export default {
 @media screen and (max-width: 550px) {
     .social-list {
             @include dflex(center, center);
+            .item__galery {
+                    padding: 10%;
+                }
+            
     }
+        
+    
 }
 </style>

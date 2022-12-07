@@ -103,8 +103,10 @@ export default {
 
 .pagination-arrow {
     position: relative;
-    width: 40px;
-    height: 40px;
+    max-width: 40px;
+    max-height: 40px;
+    min-width: 30px;
+    min-height: 30px;
     border: 1.5px solid $colordarkblue;
     border-radius: 50%;
 
@@ -131,11 +133,11 @@ export default {
         }
 
         &::before {
-            left: 21px;
+            left: 0.5em;
         }
 
         &::after {
-            left: 11px;
+            left: 1em;
         }
         &:hover {
             transform: translateX(-5px);
@@ -150,11 +152,11 @@ export default {
         }
 
         &::before {
-            right: 11px;
+            right: 0.5em;
         }
 
         &::after {
-            right: 21px;
+            right: 1em;
         }
                 &:hover {
                     transform: translateX(5px);

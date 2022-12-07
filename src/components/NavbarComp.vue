@@ -1,11 +1,11 @@
 <template>
     <nav class="nav-bar">
         <div class="nav-bar__list">
-            <my-button class="nav-bar__item" @click="$router.push('/')">{{namePage[this.lan].home}}</my-button>
-            <my-button class="nav-bar__item" @click="$router.push('/about')">{{ namePage[lang].about }}</my-button>
-            <my-button class="nav-bar__item" @click="$router.push('/documents')">{{ namePage[lang].documents }}</my-button>
-            <my-button class="nav-bar__item" @click="$router.push('/services')">{{ namePage[lang].services }}</my-button>
-            <my-button class="nav-bar__item" @click="$router.push('/employee')">{{ namePage[lang].employee }}</my-button>
+            <my-button class="nav-bar__item" @click="$router.push('/')">{{ namePage[$lang.value].home}}</my-button>
+            <my-button class="nav-bar__item" @click="$router.push('/about')">{{ namePage[$lang.value].about }}</my-button>
+            <my-button class="nav-bar__item" @click="$router.push('/documents')">{{ namePage[$lang.value].documents }}</my-button>
+            <my-button class="nav-bar__item" @click="$router.push('/services')">{{ namePage[$lang.value].services }}</my-button>
+            <my-button class="nav-bar__item" @click="$router.push('/employee')">{{ namePage[$lang.value].employee }}</my-button>
         </div>
     </nav>
 </template>
@@ -30,11 +30,7 @@ export default {
                     employee: 'Співробітнику',
                 }
             },
-            lang: this.lan,
         }
-    },
-    mounted() {
-        this.lang = localStorage.getItem('lang') || 'ua';
     },
 }
 </script>
