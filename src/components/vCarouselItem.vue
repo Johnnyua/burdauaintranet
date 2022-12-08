@@ -1,7 +1,12 @@
 <template>
     <div class="carousel__item">
-        <img :src="item.urlToImage" alt="No photo">
+        <div class="item__img">
+            <img :src="item.urlToImage" alt="No photo">
+        </div>
+        <div class="iem__name">{{item.name}}</div>
     </div>
+   
+    
 </template>
 
 <script>
@@ -19,12 +24,13 @@ export default {
 <style lang="scss" scoped>
 .carousel__item {
             @include dflex(center, center);
+            flex-direction: column;
             margin-right: 20px;
             width: 100%;
             height: 100%;
             position: absolute;
     
-            img {
+            .item__img img {
                 border-radius: 100px;
                 width: 60%;
                 height: 80%;

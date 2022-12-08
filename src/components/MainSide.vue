@@ -57,6 +57,7 @@ export default {
         const avatarIndex = Math.ceil(Math.random() * 78);
         const avatarUrl = await generateAvatar(avatarIndex);
         item.urlToImage = avatarUrl.request.responseURL;
+        console.log(item);
         return item;
       });
     },
