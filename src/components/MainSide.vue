@@ -4,13 +4,12 @@
         <div class="carousel-container side">
             <div class="carousel__title">{{ carousel.title[$lang.value] }}</div>
             <v-carousel 
-                v-if="(carouselItemsWithAvatar.length > 0)"
-                class="carousel__items" 
-                :carouselItems="carouselItemsWithAvatar" />
+                v-if="(carousel.items.length > 0)" 
+                class="carousel__wrapper" 
+                :carouselItems="carousel.items" />
             <div v-else class="carousel__error">{{ carousel.error[$lang.value] }}</div>
             <my-button class="carousel__button">{{ carousel.button[$lang.value] }}</my-button>
         </div>
-
     </aside>
 </template>
 
@@ -48,18 +47,12 @@ export default {
         async loadCarouselItems() {
             const employee = await loadEmployee();
             this.carousel.items.push(...employee.data);
-
-
-        }
-    },
-    computed: {
-        carouselItemsWithAvatar() {
-            return [...this.carousel.items].map(async (item) => {
+            this.carousel.items.forEach(async item => {
                 const avatarIndex = Math.ceil(Math.random() * 78);
                 const avatarUrl = await generateAvatar(avatarIndex);
-                item.avatar = avatarUrl.request.responseURL;
+                item.urlToImage = avatarUrl.request.responseURL;
                 return item;
-            });
+            })
         }
     },
     mounted() {
@@ -91,22 +84,26 @@ export default {
 
 .carousel__title {
     font-size: 1.3rem;
-    font-weight: 700; 
+    font-weight: 700;
     line-height: 1.5;
     text-transform: uppercase;
+
     &::after {
-       @include before-after-line (3em, 2px, $colorblack);
-       margin: 0.5em 0;
-    } 
+        @include before-after-line (3em, 2px, $colorblack);
+        margin: 0.5em 0;
+    }
 }
 
-.carousel__items {
+.carousel__wrapper {
     border: 1px solid #000;
     border-radius: 110px;
     width: 80%;
     height: 150%;
     max-height: 285px;
+    overflow: hidden;
+    margin: 0 auto;
 }
+
 .carousel__button {
     background-color: $colorblue;
     border-radius: 2em;

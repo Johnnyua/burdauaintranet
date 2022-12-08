@@ -25,6 +25,7 @@
 
 <script>
 export default {
+    name: 'PostList',
     emits: ['openPost'],
     props: {
         post: {

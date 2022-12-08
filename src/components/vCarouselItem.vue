@@ -1,5 +1,7 @@
 <template>
-    <post-item :post="item"></post-item>
+    <div>
+        <img :src="item.urlToImage" alt="No photo">
+    </div>
 </template>
 
 <script>
