@@ -3,18 +3,17 @@
     <social-comp class="social-container side" :socialUrl="companySocial" />
     <div class="carousel-container side">
       <div class="carousel__title">{{ carousel.title[$lang.value] }}</div>
-      
-          <v-carousel
-            v-if="carousel.items.length > 0"
-            :carouselItems="carousel.items"
-          />
-          <div v-else class="carousel__error">
-            {{ carousel.error[$lang.value] }}
-         
+
+      <v-carousel
+        v-if="carousel.items.length > 0"
+        :carouselItems="carousel.items"
+      />
+      <div v-else class="carousel__error">
+        {{ carousel.error[$lang.value] }}
       </div>
-      <my-button class="carousel__button">{{
-        carousel.button[$lang.value]
-      }}</my-button>
+      <my-button class="carousel__button">
+        {{ carousel.button[$lang.value] }}</my-button
+      >
     </div>
   </aside>
 </template>
@@ -100,9 +99,6 @@ export default {
     margin: 0.5em 0;
   }
 }
-
-
-
 
 .carousel__button {
   background-color: $colorblue;
