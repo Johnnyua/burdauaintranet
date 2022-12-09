@@ -85,7 +85,7 @@ export default {
   flex-direction: column;
   flex: 1 1 67%;
   background-color: $colorpink;
-  padding: 1em;
+  // padding: 1em;
 }
 
 .carousel__title {
