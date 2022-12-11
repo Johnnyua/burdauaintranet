@@ -6,7 +6,7 @@
 
       <v-carousel
         v-if="carousel.items.length > 0"
-        :carouselItems="carousel.items"
+        :carouselItems="carousel"
       />
       <div v-else class="carousel__error">
         {{ carousel.error[$lang.value] }}
@@ -45,6 +45,7 @@ export default {
           ua: "В даному періоді немає днів народження",
         },
         items: [],
+        itemName: "",
       },
     };
   },
@@ -52,13 +53,15 @@ export default {
     async loadCarouselItems() {
       const employee = await loadEmployee();
       this.carousel.items.push(...employee.data);
-      this.carousel.items.forEach(async (item) => {
-        const avatarIndex = Math.ceil(Math.random() * 78);
-        const avatarUrl = await generateAvatar(avatarIndex);
-        item.urlToImage = avatarUrl.request.responseURL;
-        console.log(item);
-        return item;
-      });
+      if (this.carousel.items.length > 0) {
+        this.carousel.items.forEach(async (item) => {
+          const avatarIndex = Math.ceil(Math.random() * 78);
+          const avatarUrl = await generateAvatar(avatarIndex);
+          item.urlToImage = avatarUrl.request.responseURL;
+          return item;
+        });
+        this.carousel.itemName = this.carousel.items[0].name;
+      }
     },
   },
   mounted() {

@@ -21,17 +21,20 @@ export default {
 
 <style lang="scss" scoped>
 .item__img {
+    width: 100%;
     height: 100%;
-    width: 120px;
     position: relative;
 
     img {
-        height: 100%;
-        border-radius: 100px;
         position: absolute;
-        top: 0;
-        left: 0;
         width: 100%;
+        height: 100%;
+        object-fit: cover;
+        left: 0;
+        top: 0;
+        border-radius: 110px;
+        box-sizing: border-box;
+        box-shadow: 0 10px 20px #00000080, 0 -1px #ffffff80;
     }
 }
 </style>

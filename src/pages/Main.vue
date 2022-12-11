@@ -44,7 +44,7 @@ export default {
     width: 100%;
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 800px) {
     .main-container {
         flex-direction: column-reverse;
 }
