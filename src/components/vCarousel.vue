@@ -42,12 +42,8 @@ export default {
 .carousel__wrapper {
   @include dflex(center, center);
   flex-direction: column;
-  // margin-left: auto;
-  // margin-right: auto;
   position: relative;
   overflow: hidden;
-  list-style: none;
-  padding: 0;
   z-index: 1;
   height: 300px;
   width: 100%;
@@ -60,11 +56,11 @@ export default {
 
     .pagination {
       position: absolute;
-      width: 100%;
-      height: 100%;
+      width: 9px;
+      height: 18px;
       top: 50%;
 
-      &.item__prev {
+      &.item__next {
         right: 0;
       }
 
@@ -83,21 +79,20 @@ export default {
   z-index: 1;
   transition-property: transform;
   box-sizing: content-box;
-  transform: translate3d(80px, 0px, 0px);
+  transform: translate3d(calc(50% - 60px), 0px, 0px);
 }
 
 .carousel__item {
   @include dflex(center, center);
   flex-direction: column;
-  flex: 1 0 33.333%;
+  flex: 1 0 auto;
   margin-right: 20px;
-  min-width: 40%;
+  width: 100px;
   max-height: 180px;
   height: 100%;
   position: relative;
   &.active {
-    min-width: 45%;
-    max-width: 120px;
+    width: 120px;
     max-height: 225px;
   }
 }

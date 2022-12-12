@@ -114,8 +114,7 @@ export default {
     &::before {
         content: "";
         position: absolute;
-        top: 50%;
-        margin-top: -0.5em;
+        top: calc(50% - 5px);
         display: block;
         width: 10px;
         height: 10px;
