@@ -14,12 +14,35 @@ export default {
         item: {
             type: Object,
             default: () => { }
+        },
+        currentItemIndex: {
+            type: Number,
+            default: 0
+        }, 
+        index: {
+            type: Number,
+            default: 0    
         }
     }
 }
 </script>
 
 <style lang="scss" scoped>
+.carousel__item {
+    @include dflex(center, center);
+    flex-direction: column;
+    flex: 1 0 auto;
+    margin-right: 20px;
+    width: 100px;
+    max-height: 180px;
+    height: 100%;
+    position: relative;
+
+    &.active {
+        width: 120px;
+        max-height: 225px;
+    }
+}
 .item__img {
     width: 100%;
     height: 100%;

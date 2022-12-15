@@ -1,29 +1,36 @@
 <template>
-  <div class="carousel__wrapper">
+  
     <div class="carousel">
       <v-carousel-item
-        v-for="item in carouselItems.items"
+        v-for="(item, index) in carouselItems"
         class="carousel__item"
-        :class="{ active: item.id == carouselItems.items[0].id}"
-        :key="item.id"
+        :class="{ active: item.id == carouselItems[0].id }"
         :item="item"
+        :currentItemIndex="currentItemIndex"
+        :index="index"
+        :key="item.id"
       >
       </v-carousel-item>
     </div>
     <div class="item__name name">
       <div class="name">
-        <div class="name__first">{{ itemFullName[0]}}</div>
-        <div v-if="(itemFullName.length > 1)">{{ itemFullName[1] }}</div>
+        <div class="name__first">{{ itemFullName[0] }}</div>
+        <div v-if="itemFullName.length > 1">{{ itemFullName[1] }}</div>
+        <div class="pagination item__prev">&lt;</div>
+        <div class="pagination item__next">&gt;</div>
       </div>
-      <div class="pagination item__prev">&lt;</div>
-      <div class="pagination item__next">&gt;</div>
     </div>
-  </div>
+  
 </template>
 
 <script>
 export default {
   name: "vCarousel",
+  data() {
+    return {
+      currentItemIndex: 0,
+    };
+  },
   props: {
     carouselItems: {
       type: Array,
@@ -32,22 +39,15 @@ export default {
   },
   computed: {
     itemFullName() {
-     return this.carouselItems.itemName.split(' ');
-    }
-  }
+      return this.carouselItems[this.currentItemIndex].name.split(" ");
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
-.carousel__wrapper {
-  @include dflex(center, center);
-  flex-direction: column;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-  height: 300px;
-  width: 100%;
 
+  
   .item__name {
     font-weight: 700;
     width: 100%;
@@ -59,17 +59,17 @@ export default {
       width: 9px;
       height: 18px;
       top: 50%;
+      margin-top: -0.625em;
 
       &.item__next {
-        right: 0;
+        right: 20px;
       }
 
       &.item__prev {
-        left: 0;
+        left: 20px;
       }
     }
   }
-}
 
 .carousel {
   @include dflex(flex-start, center);
@@ -80,21 +80,6 @@ export default {
   transition-property: transform;
   box-sizing: content-box;
   transform: translate3d(calc(50% - 60px), 0px, 0px);
-}
-
-.carousel__item {
-  @include dflex(center, center);
-  flex-direction: column;
-  flex: 1 0 auto;
-  margin-right: 20px;
-  width: 100px;
-  max-height: 180px;
-  height: 100%;
-  position: relative;
-  &.active {
-    width: 120px;
-    max-height: 225px;
-  }
 }
 
 @media screen and (max-width: 550px) {

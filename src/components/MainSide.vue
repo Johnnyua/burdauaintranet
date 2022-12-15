@@ -3,17 +3,19 @@
     <social-comp class="social-container side" :socialUrl="companySocial" />
     <div class="carousel-container side">
       <div class="carousel__title">{{ carousel.title[$lang.value] }}</div>
-
-      <v-carousel
-        v-if="carousel.items.length > 0"
-        :carouselItems="carousel"
-      />
-      <div v-else class="carousel__error">
-        {{ carousel.error[$lang.value] }}
+      <div class="carousel__wrapper">
+        <v-carousel
+          style="transform: translate3d(calc(50% - 60px), 0px, 0px)"
+          v-if="carousel.items.length > 0"
+          :carouselItems="carousel.items"
+        />
+        <div v-else class="carousel__error">
+          {{ carousel.error[$lang.value] }}
+        </div>
       </div>
       <my-button class="carousel__button">
-        {{ carousel.button[$lang.value] }}</my-button
-      >
+        {{ carousel.button[$lang.value] }}
+      </my-button>
     </div>
   </aside>
 </template>
@@ -45,7 +47,11 @@ export default {
           ua: "В даному періоді немає днів народження",
         },
         items: [],
-        itemName: "",
+        // itemName: "",
+      },
+      carouselTranslate: {
+        translate3d: "translate3d(calc(50% - 60px), 0px, 0px)",
+        left: "160px",
       },
     };
   },
@@ -60,7 +66,7 @@ export default {
           item.urlToImage = avatarUrl.request.responseURL;
           return item;
         });
-        this.carousel.itemName = this.carousel.items[0].name;
+        // this.carousel.itemName = this.carousel.items[0].name;
       }
     },
   },
@@ -103,11 +109,21 @@ export default {
   }
 }
 
+.carousel__wrapper {
+  @include dflex(center, center);
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  height: 300px;
+  width: 100%;
+}
 .carousel__button {
   background-color: $colorblue;
   border-radius: 2em;
   color: $colorwhite;
   max-width: 10em;
+  margin: 25px auto;
   padding: 6px 22px;
 }
 </style>
