@@ -1,5 +1,5 @@
 <template>
-    <div class="carousel__item">
+    <div class="carousel__item" :class="{active:currentItemIndex === index}">
         <div class="item__img">
             <img :src="item.urlToImage" alt="No photo">
         </div>
