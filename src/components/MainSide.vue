@@ -8,6 +8,8 @@
           style="transform: translate3d(calc(50% - 60px), 0px, 0px)"
           v-if="carousel.items.length > 0"
           :carouselItems="carousel.items"
+          @clickCarouselPrev="clickCarouselPrev"
+          @clickCarouselNext="clickCarouselNext"
         />
         <div v-else class="carousel__error">
           {{ carousel.error[$lang.value] }}
@@ -53,6 +55,7 @@ export default {
         translate3d: "translate3d(calc(50% - 60px), 0px, 0px)",
         left: "160px",
       },
+      currentItemIndex: 0,
     };
   },
   methods: {
@@ -69,6 +72,9 @@ export default {
         // this.carousel.itemName = this.carousel.items[0].name;
       }
     },
+    clickCarouselPrev(index) {
+      console.log(index);
+    }
   },
   mounted() {
     this.loadCarouselItems();

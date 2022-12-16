@@ -36,7 +36,6 @@
 <script>
 export default {
   name: "vCarousel",
-  emits:[],
   props: {
     carouselItems: {
       type: Array,
