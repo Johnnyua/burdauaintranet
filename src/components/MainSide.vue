@@ -74,27 +74,26 @@ export default {
     clickCarouselPrev() {
       if (this.currentItemIndex === 0) {
         this.currentItemIndex = this.carousel.items.length - 1;
-        this.inlineCarouselStyle.transform = `translate3d(calc(50% - 60px), 0px, 0px)`;
       } else {
         this.currentItemIndex--;
-        this.inlineCarouselStyle.transform = `translate3d(calc(50% - 60px), 0px, 0px)`;
       }
-      // const first = 60;
-      // this.inlineCarouselStyle.transform = `translate3d(calc(50% + 60px + ${'120px'}), 0px, 0px)`;
-      console.log(this.inlineCarouselStyle);
     },
     clickCarouselNext() {
       if (this.currentItemIndex < this.carousel.items.length - 1) {
         this.currentItemIndex++;
-        this.inlineCarouselStyle.transform = `translate3d(calc(50% - 180px), 0px, 0px)`;
       } else {
         this.currentItemIndex = 0;
-        this.inlineCarouselStyle.transform = `translate3d(calc(50% - 60px), 0px, 0px)`;
       }
     }
   },
   mounted() {
     this.loadCarouselItems();
+  },
+  watch: {
+    currentItemIndex() {
+      const shift = 60 + this.currentItemIndex * 120;
+      this.inlineCarouselStyle.transform = `translate3d(calc(50% - ${shift + 'px'}), 0px, 0px)`;
+    }
   },
   components: { SocialComp },
 };
