@@ -1,7 +1,7 @@
 <template>
   <div
     class="carousel"
-    style="transform: translate3d(calc(50% - 60px), 0px, 0px)"
+    :style="styleObject"
   >
     <v-carousel-item
       v-for="(item, index) in carouselItems"
@@ -19,13 +19,13 @@
       <div v-if="itemFullName.length > 1">{{ itemFullName[1] }}</div>
       <div
         class="pagination item__prev"
-        @click="$emit('clickCarouselPrev', currentItemIndex)"
+        @click="$emit('clickCarouselPrev', $event)"
       >
         &lt;
       </div>
       <div
         class="pagination item__next"
-        @click="$emit('clickCarouselNext', currentItemIndex)"
+        @click="$emit('clickCarouselNext', $event)"
       >
         &gt;
       </div>
@@ -45,7 +45,11 @@ export default {
       type: Number,
       default: 0,
     },
-  },
+    styleObject: {
+        type: Object,
+        default: () => {}
+      },
+    },
   computed: {
     itemFullName() {
       return this.carouselItems[this.currentItemIndex].name.split(" ");
@@ -62,6 +66,7 @@ export default {
   position: relative;
 
   .pagination {
+    cursor: pointer;
     position: absolute;
     width: 9px;
     height: 18px;

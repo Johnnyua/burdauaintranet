@@ -5,9 +5,10 @@
       <div class="carousel__title">{{ carousel.title[$lang.value] }}</div>
       <div class="carousel__wrapper">
         <v-carousel
-          style="transform: translate3d(calc(50% - 60px), 0px, 0px)"
+          :styleObject="inlineCarouselStyle"
           v-if="carousel.items.length > 0"
           :carouselItems="carousel.items"
+          :currentItemIndex="currentItemIndex"
           @clickCarouselPrev="clickCarouselPrev"
           @clickCarouselNext="clickCarouselNext"
         />
@@ -51,9 +52,8 @@ export default {
         items: [],
         // itemName: "",
       },
-      carouselTranslate: {
-        translate3d: "translate3d(calc(50% - 60px), 0px, 0px)",
-        left: "160px",
+      inlineCarouselStyle: {
+        transform: "translate3d(calc(50% - 60px), 0px, 0px)",
       },
       currentItemIndex: 0,
     };
@@ -69,11 +69,28 @@ export default {
           item.urlToImage = avatarUrl.request.responseURL;
           return item;
         });
-        // this.carousel.itemName = this.carousel.items[0].name;
       }
     },
-    clickCarouselPrev(index) {
-      console.log(index);
+    clickCarouselPrev() {
+      if (this.currentItemIndex === 0) {
+        this.currentItemIndex = this.carousel.items.length - 1;
+        this.inlineCarouselStyle.transform = `translate3d(calc(50% - 60px), 0px, 0px)`;
+      } else {
+        this.currentItemIndex--;
+        this.inlineCarouselStyle.transform = `translate3d(calc(50% - 60px), 0px, 0px)`;
+      }
+      // const first = 60;
+      // this.inlineCarouselStyle.transform = `translate3d(calc(50% + 60px + ${'120px'}), 0px, 0px)`;
+      console.log(this.inlineCarouselStyle);
+    },
+    clickCarouselNext() {
+      if (this.currentItemIndex < this.carousel.items.length - 1) {
+        this.currentItemIndex++;
+        this.inlineCarouselStyle.transform = `translate3d(calc(50% - 180px), 0px, 0px)`;
+      } else {
+        this.currentItemIndex = 0;
+        this.inlineCarouselStyle.transform = `translate3d(calc(50% - 60px), 0px, 0px)`;
+      }
     }
   },
   mounted() {
