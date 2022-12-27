@@ -1,6 +1,7 @@
-import MyButton from "./MyButton.vue";
+import vButton from "./vButton.vue";
 import MyInput from "./MyInput.vue";
 import MySearch from "./MySearch.vue";
+import vPopup from "./vPopup.vue";
 
 
-export default [MyButton, MyInput, MySearch];
+export default [vButton, MyInput, MySearch, vPopup];

@@ -16,9 +16,9 @@
           {{ carousel.error[$lang.value] }}
         </div>
       </div>
-      <my-button class="carousel__button">
+      <v-button class="carousel__button">
         {{ carousel.button[$lang.value] }}
-      </my-button>
+      </v-button>
     </div>
   </aside>
 </template>

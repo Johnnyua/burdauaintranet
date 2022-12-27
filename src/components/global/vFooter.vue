@@ -52,4 +52,5 @@ export default {
     flex: 1 1 33.333%;
     max-width: 270px;
 }
+
 </style>

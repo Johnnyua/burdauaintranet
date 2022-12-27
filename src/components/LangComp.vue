@@ -1,17 +1,17 @@
 <template>
     <div class="lang">
-        <my-button 
+        <v-button 
             value="ua"    
             :class="{ active: selectedLang == 'ua' }" 
             @click="changeLanguage"
             >Укр
-        </my-button>
-        <my-button
+        </v-button>
+        <v-button
             value="en" 
             :class="{ active: selectedLang === 'en' }" 
             @click="changeLanguage"
             >Eng
-        </my-button>
+        </v-button>
     </div>
 </template>
 

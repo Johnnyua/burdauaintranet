@@ -1,11 +1,11 @@
 <template>
     <nav class="nav-bar">
         <div class="nav-bar__list">
-            <my-button class="nav-bar__item" @click="$router.push('/')">{{ namePage[$lang.value].home}}</my-button>
-            <my-button class="nav-bar__item" @click="$router.push('/about')">{{ namePage[$lang.value].about }}</my-button>
-            <my-button class="nav-bar__item" @click="$router.push('/documents')">{{ namePage[$lang.value].documents }}</my-button>
-            <my-button class="nav-bar__item" @click="$router.push('/services')">{{ namePage[$lang.value].services }}</my-button>
-            <my-button class="nav-bar__item" @click="$router.push('/employee')">{{ namePage[$lang.value].employee }}</my-button>
+            <v-button class="nav-bar__item" @click="$router.push('/')">{{ namePage[$lang.value].home}}</v-button>
+            <v-button class="nav-bar__item" @click="$router.push('/about')">{{ namePage[$lang.value].about }}</v-button>
+            <v-button class="nav-bar__item" @click="$router.push('/documents')">{{ namePage[$lang.value].documents }}</v-button>
+            <v-button class="nav-bar__item" @click="$router.push('/services')">{{ namePage[$lang.value].services }}</v-button>
+            <v-button class="nav-bar__item" @click="$router.push('/employee')">{{ namePage[$lang.value].employee }}</v-button>
         </div>
     </nav>
 </template>
