@@ -1,4 +1,5 @@
 <template>
+<transition name="fade">
   <div
     class="carousel"
     :style="styleObject"
@@ -13,6 +14,7 @@
     >
     </v-carousel-item>
   </div>
+</transition>
   <div class="item__name name">
     <div class="name">
       <div class="name__first">{{ itemFullName[0] }}</div>
@@ -31,11 +33,12 @@
       </div>
     </div>
   </div>
-</template>em
+</template>
 
 <script>
 export default {
   name: "vCarousel",
+  emits: ['clickCarouselPrev', 'clickCarouselNext'],
   props: {
     carouselItems: {
       type: Array,
@@ -89,6 +92,7 @@ export default {
   width: 100%;
   height: 100%;
   z-index: 1;
+  opacity: 1;
   transition-property: transform;
   box-sizing: content-box;
   // transform: translate3d(calc(50% - 60px), 0px, 0px);
@@ -98,5 +102,24 @@ export default {
   .carousel {
     left: 0;
   }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 1s ease-in-out;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+.fade-enter-to,
+.fade-leave-from {
+  opacity: 1;
+}
+
+.fade-move {
+  transition: transform 1s ease;
 }
 </style>
