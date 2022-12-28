@@ -1,9 +1,10 @@
 <template>
-<transition name="fade">
+
   <div
     class="carousel"
     :style="styleObject"
   >
+  <transition-group appear name="fade">
     <v-carousel-item
       v-for="(item, index) in carouselItems"
       class="carousel__item"
@@ -13,8 +14,9 @@
       :key="item.id"
     >
     </v-carousel-item>
+    </transition-group>
   </div>
-</transition>
+
   <div class="item__name name">
     <div class="name">
       <div class="name__first">{{ itemFullName[0] }}</div>
@@ -92,10 +94,8 @@ export default {
   width: 100%;
   height: 100%;
   z-index: 1;
-  opacity: 1;
-  transition-property: transform;
   box-sizing: content-box;
-  // transform: translate3d(calc(50% - 60px), 0px, 0px);
+  transition: transform 1s ease;
 }
 
 @media screen and (max-width: 550px) {
@@ -106,7 +106,7 @@ export default {
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: all 1s ease-in-out;
+  transition: opacity 1s ease;
 }
 
 .fade-enter-from,
@@ -117,9 +117,5 @@ export default {
 .fade-enter-to,
 .fade-leave-from {
   opacity: 1;
-}
-
-.fade-move {
-  transition: transform 1s ease;
 }
 </style>

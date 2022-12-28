@@ -3,9 +3,7 @@
     <social-comp class="social-container side" :socialUrl="companySocial" />
     <div class="carousel-container side">
       <div class="carousel__title">{{ carousel.title[$lang.value] }}</div>
-      <transition name="fade">
       <div class="carousel__wrapper">
-        
           <v-carousel
             :styleObject="inlineCarouselStyle"
             v-if="carousel.items.length > 0"
@@ -17,9 +15,7 @@
           <div v-else class="carousel__error">
             {{ carousel.error[$lang.value] }}
           </div>
-          
       </div>
-        </transition>
       <v-button class="carousel__button">
         {{ carousel.button[$lang.value] }}
       </v-button>
@@ -153,23 +149,5 @@ export default {
   max-width: 10em;
   margin: 25px auto;
   padding: 6px 22px;
-}
-.fade-enter-active,
-.fade-leave-active {
-  transition: all 1s ease-in-out;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-
-.fade-enter-to,
-.fade-leave-from {
-  opacity: 1;
-}
-
-.fade-move {
-  transition: transform 1s ease;
 }
 </style>
