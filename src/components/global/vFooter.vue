@@ -12,6 +12,11 @@
                 <span>All rights reserved</span>
             </div>
         </div>
+        <v-popup class="popup-wrapper">
+            <template v-slot:header>
+                <h2>Cookies Policy</h2>
+            </template>
+        </v-popup>
     </footer>
 </template>
 
@@ -40,6 +45,7 @@ export default {
     padding: 5px;
     min-height: 60px;
     background-color: #000;
+    position: relative;
 }
 
 .footer__content {
@@ -52,5 +58,12 @@ export default {
     flex: 1 1 33.333%;
     max-width: 270px;
 }
-
+.popup-wrapper {
+    position: absolute;
+    bottom: 0;
+    z-index: 9998;
+    width: 50%;
+    background-color: $colorwhite;
+    
+}
 </style>
