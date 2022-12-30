@@ -38,7 +38,7 @@ export default {
       },
       carousel: {
         title: {
-          en: "Birsdays",
+          en: "Birthdays",
           ua: "Дні народження",
         },
         button: {
@@ -46,7 +46,7 @@ export default {
           ua: "Привітати",
         },
         error: {
-          en: "No birsdays in this period",
+          en: "No birthdays in this period",
           ua: "В даному періоді немає днів народження",
         },
         items: [],

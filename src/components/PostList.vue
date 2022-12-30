@@ -82,13 +82,15 @@ export default {
     margin-right: 10px;
 }
 
-.list-enter-active,
+.list-enter-active {
+    transition: all 2s ease-in-out;
+}
 .list-leave-active {
     transition: all 1s ease-in-out;
 }
 
 .list-enter-from {
-    transform: translateY(1000px);
+    transform: translateX(1000px);
 }
 .list-leave-to {
     opacity: 0;

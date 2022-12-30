@@ -24,7 +24,7 @@ export default {
 
 .main-content-container {
     position: relative;
-    padding: 0 0 0 44px;
+    padding: 0 0 0 2em;
     margin: 0 0 10px 0;
     width: 100%;
     height: 100%;

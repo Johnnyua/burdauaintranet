@@ -35,7 +35,7 @@
   }
 
   .post__img {
-    flex: 0 0 33.333%;
+    flex: 0 1 33.333%;
   }
 
   @media screen and (min-width: 550px) {
@@ -66,6 +66,7 @@
   @include dflex(space-between, center);
   line-height: 1.5;
 }
+
 
 .post_title {
   font-weight: 600;

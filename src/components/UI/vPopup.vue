@@ -1,22 +1,14 @@
 <template>
     <div v-if="show">
         <div class="popup-content">
-            <div class="popup__header">
+            <div class="popup__header popup">
                 <slot name="header"></slot>
             </div>
-            <div class="popup__body">
+            <div class="popup__body popup">
                 <slot name="body"></slot>
             </div>
-            <div class="popup__footer">
+            <div class="popup__footer popup">
                 <slot name="footer"></slot>
-            </div>
-            <div class="popup__btn">
-                <v-button>
-                    <slot name="btn__ok"></slot>
-                </v-button>
-                <v-button>
-                    <slot name="btn__close"></slot>
-                </v-button>
             </div>
         </div>
     </div>
@@ -35,9 +27,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.popup {
+    margin-bottom: 10px;
+}
 .popup-content {
     @include dflex(center, center);
     flex-direction: column;
-    padding: 5px;
+    padding: 10px;
 }
 </style>
