@@ -56,6 +56,9 @@ export default {
       this.policyConfirmed = localStorage.setItem('policyConfirmed', this.policyConfirmed);
     }
   },
+  created() {
+    
+  },
   mounted() {
     this.copyrights.author = 'Yevhen Diachenko';
     this.copyrights.year = new Date().getFullYear();
