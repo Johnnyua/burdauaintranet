@@ -1,7 +1,7 @@
 <template>
     <footer class="main-footer-container">
         <div class="footer__logo">
-            <logo-comp></logo-comp>
+            <v-logo />
         </div>
         <div class="footer__content">
             <div class="content__cookies">
@@ -17,7 +17,6 @@
 </template>
 
 <script>
-import LogoComp from '@/components/LogoComp.vue';
 export default {
     name: 'vFooter',
     props: {
@@ -30,7 +29,6 @@ export default {
             text:''
         },
     },
-    components: { LogoComp }
 }
 </script>
 

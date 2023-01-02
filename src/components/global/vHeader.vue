@@ -1,8 +1,8 @@
 <template>
     <header class="main-header">
-        <logo-comp class="header__logo"></logo-comp>
+        <v-logo class="header__logo"></v-logo>
         <div class="nav-lang-container">
-            <NavbarComp class="navbar-container"></NavbarComp>
+            <v-nav-bar class="navbar-container"></v-nav-bar>
             <div class="lang-search-container">
                 <my-search @click="changeSearch" />
                 <transition name="slide-fade">
@@ -12,7 +12,7 @@
                         ref="searchinput"
                     />
                 </transition>
-                <lang-comp />
+                <v-lang />
             </div>
 
         </div>
@@ -21,9 +21,6 @@
 </template>
 
 <script>
-import NavbarComp from '@/components/NavbarComp.vue';
-import LangComp from '@/components/LangComp.vue';
-import LogoComp from '@/components/LogoComp.vue';
 export default {
     name: 'vHeader',
     data() {
@@ -48,7 +45,6 @@ export default {
             if (this.isSearch) { this.$refs.searchinput.$el.focus(); }
         }    
     },
-    components: { NavbarComp, LangComp, LogoComp }
 }
 </script>
 

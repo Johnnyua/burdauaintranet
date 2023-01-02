@@ -40,12 +40,6 @@ export default {
       policyConfirmed: false,
     }
   },
-  created() {
-    window.addEventListener('scroll', this.eventHandler);
-  },
-  destroyed() {
-    window.addEventListener("scroll", this.eventHandler);
-  },
   methods: {
     showPolicyPopupShow() {
       const policySaved = localStorage.getItem('policyConfirmed');
@@ -61,11 +55,6 @@ export default {
       this.policyPopupShow = false;
       this.policyConfirmed = localStorage.setItem('policyConfirmed', this.policyConfirmed);
     },
-    eventHandler(e) {
-      
-      console.log(this.$refs.popupScroll.$el.getBoundingClientRect());
-        
-    }
   },
   mounted() {
     this.copyrights.author = 'Yevhen Diachenko';
@@ -98,7 +87,7 @@ export default {
 }
 
 .popup-wrapper {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   z-index: 9998;
   width: 50%;

@@ -16,7 +16,7 @@
             {{ carousel.error[$lang.value] }}
           </div>
       </div>
-      <v-button class="carousel__button">
+      <v-button class="carousel__button" @click="mailToBirthday">
         {{ carousel.button[$lang.value] }}
       </v-button>
     </div>
@@ -83,6 +83,13 @@ export default {
         this.currentItemIndex++;
       } else {
         this.currentItemIndex = 0;
+      }
+    },
+    mailToBirthday() {
+      const email = this.carousel.items[this.currentItemIndex].email;
+      if (email) {
+        var sendMail = 'mailto:' + email;
+        window.location.href = sendMail;
       }
     },
   },
