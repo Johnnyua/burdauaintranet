@@ -6,8 +6,8 @@
       :copyrights="copyrights"
       :cookiesPolicy="cookiesPolicy">
     </v-footer>
-    <transition name="slide-fade">
-      <v-popup class="popup-wrapper" :show="policyPopupShow">
+    <transition name="popup-fade">
+      <v-popup class="popup-wrapper" :show="policyPopupShow" ref="popupScroll">
         <template v-slot:header>
           <h2>Cookies Policy</h2>
         </template>
@@ -40,6 +40,12 @@ export default {
       policyConfirmed: false,
     }
   },
+  created() {
+    window.addEventListener('scroll', this.eventHandler);
+  },
+  destroyed() {
+    window.addEventListener("scroll", this.eventHandler);
+  },
   methods: {
     showPolicyPopupShow() {
       const policySaved = localStorage.getItem('policyConfirmed');
@@ -54,10 +60,12 @@ export default {
       this.policyConfirmed = false;
       this.policyPopupShow = false;
       this.policyConfirmed = localStorage.setItem('policyConfirmed', this.policyConfirmed);
+    },
+    eventHandler(e) {
+      
+      console.log(this.$refs.popupScroll.$el.getBoundingClientRect());
+        
     }
-  },
-  created() {
-    
   },
   mounted() {
     this.copyrights.author = 'Yevhen Diachenko';
@@ -129,23 +137,23 @@ export default {
   }
 }
 
-.slide-fade-enter-active {
+.popup-fade-enter-active {
   transition: all 0.5s 2s ease-out;
 }
 
-.slide-fade-leave-active {
+.popup-fade-leave-active {
   transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
 }
 
-.slide-fade-enter-from
-.slide-fade-leave-to {
+.popup-fade-enter-from
+.popup-fade-leave-to {
   opacity: 0;
 }
 
-.slide-fade-enter-from {
+.popup-fade-enter-from {
   transform: translateY(100%);
 }
-.slide-fade-leave-to {
+.popup-fade-leave-to {
   transform: translateX(20px);
 }
 </style>
