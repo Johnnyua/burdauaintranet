@@ -44,12 +44,12 @@ export default {
 
     @media screen and (max-width:1150px) {
         .nav-bar__list {
-            @include dflex(center,center);
-            // flex-direction: column;
+            @include dflex(center,flex-start);
+            flex-direction: column;
         }
     }
     .nav-bar__item {
-        margin: 0 60px 0 0;
+        margin: 0 60px 10px 0;
         font-weight: 700;
         &::after {
             @include before-after-line(0, 2px, $colordarkblue);

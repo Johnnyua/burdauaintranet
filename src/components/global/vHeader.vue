@@ -1,6 +1,7 @@
 <template>
     <header class="main-header">
         <v-logo class="header__logo"></v-logo>
+        <v-burger-menu></v-burger-menu>
         <div class="nav-lang-container">
             <v-nav-bar class="navbar-container"></v-nav-bar>
             <div class="lang-search-container">
@@ -79,6 +80,7 @@ export default {
     @include dflex(space-between, center);
     background-color: $colorgrey;
     height: 80%;
+    padding: 1rem;
 
     .hide {
         display: none;
