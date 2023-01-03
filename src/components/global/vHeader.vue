@@ -41,9 +41,12 @@ export default {
         },
     },
     watch: {
-        isSearch() {
-            if (this.isSearch) { this.$refs.searchinput.$el.focus(); }
-        }    
+        isSearchActive() {
+            if (this.isSearchActive) { this.$refs.searchinput.$el.focus(); }
+        },
+        searchText() {
+            console.log(this.searchText);
+        }   
     },
 }
 </script>
