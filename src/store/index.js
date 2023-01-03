@@ -1,10 +1,10 @@
 import { createStore } from "vuex";
 import { languageModule } from "./languageModule";
-import { searchText } from "./searchText";
+import { searchModule } from "./searchModule";
 
 export default createStore({
   modules: {
     currentLanguage: languageModule,
-    searchText: searchText,
+    search: searchModule,
   },
 });

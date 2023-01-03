@@ -24,6 +24,7 @@
 import PostList from "@/components/PostList.vue";
 import PaginationComp from "@/components/PaginationComp.vue";
 import { getPosts } from "@/api/loadPosts";
+import { mapState } from "vuex";
 
 export default {
     data() {
@@ -45,10 +46,10 @@ export default {
         }
     },
     methods: {
-        async loadPosts() {
+        async loadPosts(addedParam) {
             try {
                 this.posts = [];
-                const response = await getPosts(this.currentPage);
+                const response = await getPosts(this.currentPage, addedParam);
                 this.totalPages = Math.ceil(response.data.totalResults / this.limitOfPage);
                 this.posts.push(...response.data.articles);
                 this.isLoading = false;
@@ -75,6 +76,9 @@ export default {
         this.loadPosts();
     },
     computed: {
+        ...mapState({
+            searchText: state => state.search.text,
+        }),
         formatedPublishedPosts() {
             return this.posts.map((item) => {
                 const date = new Date(Date.parse(item.publishedAt));
@@ -99,6 +103,9 @@ export default {
         currentPage(newValue) {
             this.currentPage = newValue;
             this.loadPosts();
+        },
+        searchText() {
+            this.loadPosts({q: this.searchText});
         }
     },
     components: { PostList, PaginationComp }

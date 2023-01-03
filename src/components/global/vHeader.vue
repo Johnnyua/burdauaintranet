@@ -10,6 +10,8 @@
                         v-show="isSearchActive"
                         v-model.trim="searchText" 
                         ref="searchinput"
+                        @input="$store.commit('search/setSearchText', searchText)"
+                        placeholder="Search..."
                     />
                 </transition>
                 <v-lang />
@@ -21,6 +23,7 @@
 </template>
 
 <script>
+
 export default {
     name: 'vHeader',
     data() {
@@ -43,10 +46,7 @@ export default {
     watch: {
         isSearchActive() {
             if (this.isSearchActive) { this.$refs.searchinput.$el.focus(); }
-        },
-        searchText() {
-            console.log(this.searchText);
-        }   
+        },   
     },
 }
 </script>
