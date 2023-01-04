@@ -4,17 +4,17 @@
     <div class="carousel-container side">
       <div class="carousel__title">{{ carousel.title[$lang.value] }}</div>
       <div class="carousel__wrapper">
-          <v-carousel
-            :styleObject="inlineCarouselStyle"
-            v-if="carousel.items.length > 0"
-            :carouselItems="carousel.items"
-            :currentItemIndex="currentItemIndex"
-            @clickCarouselPrev="clickCarouselPrev"
-            @clickCarouselNext="clickCarouselNext"
-          />
-          <div v-else class="carousel__error">
-            {{ carousel.error[$lang.value] }}
-          </div>
+        <v-carousel
+          :styleObject="inlineCarouselStyle"
+          v-if="carousel.items.length > 0"
+          :carouselItems="carousel.items"
+          :currentItemIndex="currentItemIndex"
+          @clickCarouselPrev="clickCarouselPrev"
+          @clickCarouselNext="clickCarouselNext"
+        />
+        <div v-else class="carousel__error">
+          {{ carousel.error[$lang.value] }}
+        </div>
       </div>
       <v-button class="carousel__button" @click="mailToBirthday">
         {{ carousel.button[$lang.value] }}
@@ -27,7 +27,7 @@
 import { loadEmployee } from "@/api/loadEmployee";
 import { generateAvatar } from "@/api/generateAvatar";
 export default {
-  name: 'MainSide',
+  name: "MainSide",
   data() {
     return {
       companySocial: {
@@ -88,7 +88,7 @@ export default {
     mailToBirthday() {
       const email = this.carousel.items[this.currentItemIndex].email;
       if (email) {
-        var sendMail = 'mailto:' + email;
+        var sendMail = "mailto:" + email;
         window.location.href = sendMail;
       }
     },
@@ -148,6 +148,7 @@ export default {
   height: 300px;
   width: 100%;
 }
+
 .carousel__button {
   background-color: $colorblue;
   border-radius: 2em;

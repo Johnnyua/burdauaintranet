@@ -1,18 +1,9 @@
-
-
 export const languageModule = {
   state: () => ({
-    locale:localStorage.getItem('lang') || 'ua'
+    locale: localStorage.getItem("lang") || "ua",
   }),
-  getters: {
-    
-  },
-  mutations: {
-    
-  },
-  actions: {
-    
-    },
-
+  getters: {},
+  mutations: {},
+  actions: {},
   namespaced: true,
 };

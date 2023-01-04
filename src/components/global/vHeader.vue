@@ -1,121 +1,128 @@
 <template>
-    <header class="main-header">
-        <v-logo class="header__logo"></v-logo>
-        <div class="nav-lang-container">
-            <v-nav-bar class="navbar-container"></v-nav-bar>
-            <div>
-                <v-burger-menu 
-                    class="navbar-mobile" 
-                    :show="isMobileMenu"
-                    @click="showMobileMenu"
-                    />
-                <div class="lang-search-container">
-                    <my-search @click="changeSearch" />
-                    <transition name="slide-fade">
-                        <my-input v-show="isSearchActive" v-model.trim="searchText" ref="searchinput"
-                            @input="$store.commit('search/setSearchText', searchText)" placeholder="Search..." />
-                    </transition>
-                    <v-lang />
-                </div>
-            </div>
+  <header class="main-header">
+    <v-logo class="header__logo"></v-logo>
+    <div class="nav-lang-container">
+      <v-nav-bar class="navbar-container"></v-nav-bar>
+      <div>
+        <v-burger-menu
+          class="navbar-mobile"
+          :show="isMobileMenu"
+          @click="showMobileMenu"
+        />
+        <div class="lang-search-container">
+          <my-search @click="changeSearch" />
+          <transition name="slide-fade">
+            <my-input
+              v-show="isSearchActive"
+              v-model.trim="searchText"
+              ref="searchinput"
+              @input="$store.commit('search/setSearchText', searchText)"
+              placeholder="Search..."
+            />
+          </transition>
+          <v-lang />
         </div>
-    </header>
+      </div>
+    </div>
+  </header>
 </template>
 
 <script>
-
 export default {
-    name: 'vHeader',
-    data() {
-        return {
-            searchText: '',
-            isSearchActive: false,
-            isMobileMenu: false,
-        }
+  name: "vHeader",
+  data() {
+    return {
+      searchText: "",
+      isSearchActive: false,
+      isMobileMenu: false,
+    };
+  },
+  methods: {
+    changeSearch(e) {
+      this.isSearchActive = !this.isSearchActive;
+      this.$nextTick(() => {
+        const searchinput = this.$refs.searchinput.$el;
+        searchinput.focus();
+      });
+      if (!this.isSearchActive) {
+        this.searchText = "";
+      }
     },
-    methods: {
-        changeSearch(e) {
-            this.isSearchActive = !this.isSearchActive;
-            this.$nextTick(() => {
-                const searchinput = this.$refs.searchinput.$el;
-                searchinput.focus();    
-            })
-            if (!this.isSearchActive) { this.searchText = '' }
-                         
-        },
-        showMobileMenu() {
-            this.isMobileMenu = !this.isMobileMenu;
-        },
+    showMobileMenu() {
+      this.isMobileMenu = !this.isMobileMenu;
     },
-    watch: {
-        isSearchActive() {
-            if (this.isSearchActive) { this.$refs.searchinput.$el.focus(); }
-        },   
+  },
+  watch: {
+    isSearchActive() {
+      if (this.isSearchActive) {
+        this.$refs.searchinput.$el.focus();
+      }
     },
-}
+  },
+};
 </script>
 
 <style lang="scss" scoped>
 .main-header {
-    @include dflex(space-between, center);
-    margin: 0 0 20px 0;
-    min-height: 70px;
-    width: 100%;
-    flex-shrink: 0;
+  @include dflex(space-between, center);
+  margin: 0 0 20px 0;
+  min-height: 70px;
+  width: 100%;
+  flex-shrink: 0;
 }
 
-@media screen and (max-width:1255px) {
-    .navbar-container {
-        @include dflex(flex-end, center);
-        margin: 0 0 0 20px;
-        flex-direction: column;
-    }
+@media screen and (max-width: 1255px) {
+  .navbar-container {
+    @include dflex(flex-end, center);
+    margin: 0 0 0 20px;
+    flex-direction: column;
+  }
 }
 
 .header__logo {
-    flex: 1 1 33.333%;
-    max-width: 270px;
+  flex: 1 1 33.333%;
+  max-width: 270px;
 }
 
 .nav-lang-container {
-    @include dflex(space-between, center);
-    height: 100%;
+  @include dflex(space-between, center);
+  height: 100%;
 }
 
 .navbar-mobile {
-    display: none;
+  display: none;
 }
 
-@media screen and (max-width:800px) {
-    .navbar-mobile {
-        @include dflex(flex-end, center);
-    }
-    .navbar-container {
-        display: none;
-    }
+@media screen and (max-width: 800px) {
+  .navbar-mobile {
+    @include dflex(flex-end, center);
+  }
+  .navbar-container {
+    display: none;
+  }
 }
 .lang-search-container {
-    @include dflex(space-between, center);
-    background-color: $colorgrey;
-    height: 80%;
-    padding: 1rem;
+  @include dflex(space-between, center);
+  background-color: $colorgrey;
+  height: 80%;
+  padding: 1rem;
 
-    .hide {
-        display: none;
-    }
+  .hide {
+    display: none;
+  }
 }
 
 .slide-fade-enter-active {
-    transition: all 0.7s ease-out;
+  transition: all 0.7s ease-out;
 }
 
 .slide-fade-leave-active {
-    transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);
+  transition: all 0.7s cubic-bezier(1, 0.5, 0.8, 1);
 }
 
 .slide-fade-enter-from,
 .slide-fade-leave-to {
-    transform: translateX(50px);
-    opacity: 0;
+  transform: translateX(50px);
+  opacity: 0;
 }
 </style>

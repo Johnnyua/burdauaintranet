@@ -2,9 +2,7 @@
   <div class="wrapper">
     <v-header />
     <router-view :key="$route.fullPath"></router-view>
-    <v-footer 
-      :copyrights="copyrights"
-      :cookiesPolicy="cookiesPolicy">
+    <v-footer :copyrights="copyrights" :cookiesPolicy="cookiesPolicy">
     </v-footer>
     <transition name="popup-fade">
       <v-popup class="popup-wrapper" :show="policyPopupShow" ref="popupScroll">
@@ -12,17 +10,22 @@
           <h2>Cookies Policy</h2>
         </template>
         <template v-slot:body>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, dolore.</p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati,
+            dolore.
+          </p>
         </template>
         <template v-slot:footer>
           <div class="popup-btn">
             <v-button class="btn btn-ok" @click="policyConfirm">OK</v-button>
-            <v-button class="btn btn-close" @click="policyRefuse">Close</v-button>
+            <v-button class="btn btn-close" @click="policyRefuse"
+              >Close</v-button
+            >
           </div>
         </template>
       </v-popup>
     </transition>
-</div>
+  </div>
 </template>
 
 <script>
@@ -32,39 +35,44 @@ export default {
       copyrights: {},
       cookiesPolicy: {},
       en: {
-        popupTitleText: 'Cookies Policy',
-        popupBody: '',
+        popupTitleText: "Cookies Policy",
+        popupBody: "",
       },
       policyPopupShow: false,
       policyConfirmed: false,
-    }
+    };
   },
   methods: {
     showPolicyPopupShow() {
-      const policySaved = localStorage.getItem('policyConfirmed');
-      if (policySaved === null) { this.policyPopupShow = true }
+      const policySaved = localStorage.getItem("policyConfirmed");
+      if (policySaved === null) {
+        this.policyPopupShow = true;
+      }
     },
     policyConfirm(e) {
       this.policyConfirmed = true;
       this.policyPopupShow = false;
-      localStorage.setItem('policyConfirmed', this.policyConfirmed);
+      localStorage.setItem("policyConfirmed", this.policyConfirmed);
     },
     policyRefuse(e) {
       this.policyConfirmed = false;
       this.policyPopupShow = false;
-      this.policyConfirmed = localStorage.setItem('policyConfirmed', this.policyConfirmed);
+      this.policyConfirmed = localStorage.setItem(
+        "policyConfirmed",
+        this.policyConfirmed
+      );
     },
   },
   mounted() {
-    this.copyrights.author = 'Yevhen Diachenko';
+    this.copyrights.author = "Yevhen Diachenko";
     this.copyrights.year = new Date().getFullYear();
 
-    this.cookiesPolicy.link = '#';
-    this.cookiesPolicy.text = 'cookies';
+    this.cookiesPolicy.link = "#";
+    this.cookiesPolicy.text = "cookies";
 
     this.showPolicyPopupShow();
   },
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -133,8 +141,7 @@ export default {
   transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
 }
 
-.popup-fade-enter-from
-.popup-fade-leave-to {
+.popup-fade-enter-from .popup-fade-leave-to {
   opacity: 0;
 }
 

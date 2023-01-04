@@ -1,19 +1,15 @@
 <template>
-
-  <div
-    class="carousel"
-    :style="styleObject"
-  >
-  <transition-group appear name="fade">
-    <v-carousel-item
-      v-for="(item, index) in carouselItems"
-      class="carousel__item"
-      :item="item"
-      :currentItemIndex="currentItemIndex"
-      :index="index"
-      :key="item.id"
-    >
-    </v-carousel-item>
+  <div class="carousel" :style="styleObject">
+    <transition-group appear name="fade">
+      <v-carousel-item
+        v-for="(item, index) in carouselItems"
+        class="carousel__item"
+        :item="item"
+        :currentItemIndex="currentItemIndex"
+        :index="index"
+        :key="item.id"
+      >
+      </v-carousel-item>
     </transition-group>
   </div>
 
@@ -40,7 +36,7 @@
 <script>
 export default {
   name: "vCarousel",
-  emits: ['clickCarouselPrev', 'clickCarouselNext'],
+  emits: ["clickCarouselPrev", "clickCarouselNext"],
   props: {
     carouselItems: {
       type: Array,
@@ -51,10 +47,10 @@ export default {
       default: 0,
     },
     styleObject: {
-        type: Object,
-        default: () => {}
-      },
+      type: Object,
+      default: () => {},
     },
+  },
   computed: {
     itemFullName() {
       return this.carouselItems[this.currentItemIndex].name.split(" ");

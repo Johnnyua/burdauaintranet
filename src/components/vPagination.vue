@@ -26,6 +26,7 @@
 <script>
 export default {
     name: 'vPagination',
+    emits: ['clickOnNumber', 'clickLastPage', 'clickFirstPage'],
     data() {
         return {
             numShown: 10
@@ -41,7 +42,6 @@ export default {
             default: 0
         }
     },
-    emits: ['clickOnNumber', 'clickLastPage', 'clickFirstPage'],
     created() {
         window.addEventListener("resize", this.resizeWindow);
     },
