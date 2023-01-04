@@ -56,7 +56,7 @@ export default {
                 scrollTo(0, 0);
 
             } catch (error) {
-                console.log(error.message);
+                console.log(error.response.data.message);
             }
         },
         openPost(post) {

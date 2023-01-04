@@ -1,25 +1,24 @@
 <template>
     <header class="main-header">
         <v-logo class="header__logo"></v-logo>
-        <v-burger-menu></v-burger-menu>
         <div class="nav-lang-container">
             <v-nav-bar class="navbar-container"></v-nav-bar>
-            <div class="lang-search-container">
-                <my-search @click="changeSearch" />
-                <transition name="slide-fade">
-                    <my-input
-                        v-show="isSearchActive"
-                        v-model.trim="searchText" 
-                        ref="searchinput"
-                        @input="$store.commit('search/setSearchText', searchText)"
-                        placeholder="Search..."
+            <div>
+                <v-burger-menu 
+                    class="navbar-mobile" 
+                    :show="isMobileMenu"
+                    @click="showMobileMenu"
                     />
-                </transition>
-                <v-lang />
+                <div class="lang-search-container">
+                    <my-search @click="changeSearch" />
+                    <transition name="slide-fade">
+                        <my-input v-show="isSearchActive" v-model.trim="searchText" ref="searchinput"
+                            @input="$store.commit('search/setSearchText', searchText)" placeholder="Search..." />
+                    </transition>
+                    <v-lang />
+                </div>
             </div>
-
         </div>
-
     </header>
 </template>
 
@@ -31,6 +30,7 @@ export default {
         return {
             searchText: '',
             isSearchActive: false,
+            isMobileMenu: false,
         }
     },
     methods: {
@@ -42,6 +42,9 @@ export default {
             })
             if (!this.isSearchActive) { this.searchText = '' }
                          
+        },
+        showMobileMenu() {
+            this.isMobileMenu = !this.isMobileMenu;
         },
     },
     watch: {
@@ -58,10 +61,13 @@ export default {
     margin: 0 0 20px 0;
     min-height: 70px;
     width: 100%;
+    flex-shrink: 0;
 }
 
 @media screen and (max-width:1255px) {
     .navbar-container {
+        @include dflex(flex-end, center);
+        margin: 0 0 0 20px;
         flex-direction: column;
     }
 }
@@ -76,6 +82,18 @@ export default {
     height: 100%;
 }
 
+.navbar-mobile {
+    display: none;
+}
+
+@media screen and (max-width:800px) {
+    .navbar-mobile {
+        @include dflex(flex-end, center);
+    }
+    .navbar-container {
+        display: none;
+    }
+}
 .lang-search-container {
     @include dflex(space-between, center);
     background-color: $colorgrey;

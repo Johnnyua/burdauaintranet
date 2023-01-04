@@ -22,7 +22,6 @@
         </template>
       </v-popup>
     </transition>
-    
 </div>
 </template>
 
@@ -75,7 +74,7 @@ export default {
   flex-direction: column;
   max-width: 1920px;
   min-width: 320px;
-  height: 100%;
+  height: 100vh;
   margin: 0 auto;
   padding: 20px 20px 0 20px;
   &::before {

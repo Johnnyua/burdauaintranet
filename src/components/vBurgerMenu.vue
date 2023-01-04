@@ -1,14 +1,17 @@
 <template>
     <div>
-        <div class="site-link-mobile">
-            <div id="burger" class="drop-down-menu-mobile-button">
-                <div></div>
-                <div></div>
-                <div></div>
+        <div class="burger">
+            <div class="drop-down-menu-mobile-button">
+                <div :class="{'burger-rotate-positive': show}"></div>
+                <div v-show="!show"></div>
+                <div :class="{'burger-rotate-negative': show}"></div>
             </div>
-            <div class="main-navbar-container-mobile">
-                <v-nav-bar></v-nav-bar>
-            </div>
+            <transition name="burger-fade">
+                <div class="main-navbar-container-mobile" v-show="show">
+                    <v-nav-bar class="navbar-container"></v-nav-bar>
+                </div>
+            </transition>
+            
         </div>
     </div>
 </template>
@@ -16,13 +19,19 @@
 <script>
 export default {
     name: 'vBurgerMenu',
+    props: {
+        show: {
+            type: Boolean,
+            default: true
+        }
+    }
 
 }
 </script>
 
 <style lang="scss" scoped>
-.site-link-mobile {
-    display: block;
+.burger {
+    display: inherit;
     font-size: 20px;
     font-weight: 700;
     text-transform: uppercase;
@@ -50,7 +59,7 @@ export default {
         }
 
         &:last-child {
-            top: 13px;
+            top: 14px;
         }
 
         &.burger-rotate-positive {
@@ -66,7 +75,8 @@ export default {
     }
 }
 .main-navbar-container-mobile {
-
+    @include dflex(flex-start, center);
+    flex-direction: column;
     min-width: 33%;
     height: 100vh;
     border-top: 1px solid #cac8c8;
@@ -79,5 +89,29 @@ export default {
     z-index: 2;
     // transform: translateX(-1000px);
     transition: transform 0.7s ease-in-out;
+} 
+
+.navbar-container {
+    margin: 20px 0;
+    padding: 0 10px;
+}
+.burger-fade-enter-active {
+    transition: all 0.5s ease-out;
+}
+
+.burger-fade-leave-active {
+    transition: all 0.5s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.burger-fade-enter-from .burger-fade-leave-to {
+    opacity: 0;
+}
+
+.burger-fade-enter-from {
+    transform: translateX(-100%);
+}
+
+.burger-fade-leave-to {
+    transform: translateX(-100%);
 }
 </style>

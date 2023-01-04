@@ -38,8 +38,7 @@ export default {
 
 <style lang="scss" scoped>
 .nav-bar {
-        @include dflex(flex-end, center);
-        margin: 0 0 0 20px;
+        
     }
 
     @media screen and (max-width:1150px) {
@@ -49,7 +48,7 @@ export default {
         }
     }
     .nav-bar__item {
-        margin: 0 60px 10px 0;
+        margin: 0 60px 20px 0;
         font-weight: 700;
         &::after {
             @include before-after-line(0, 2px, $colordarkblue);
