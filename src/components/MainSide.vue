@@ -1,6 +1,6 @@
 <template>
   <aside>
-    <social-comp class="social-container side" :socialUrl="companySocial" />
+    <v-social class="social-container side" :socialUrl="companySocial" />
     <div class="carousel-container side">
       <div class="carousel__title">{{ carousel.title[$lang.value] }}</div>
       <div class="carousel__wrapper">
@@ -24,10 +24,10 @@
 </template>
 
 <script>
-import SocialComp from "./SocialComp.vue";
 import { loadEmployee } from "@/api/loadEmployee";
 import { generateAvatar } from "@/api/generateAvatar";
 export default {
+  name: 'MainSide',
   data() {
     return {
       companySocial: {
@@ -104,7 +104,6 @@ export default {
       }), 0px, 0px)`;
     },
   },
-  components: { SocialComp },
 };
 </script>
 

@@ -1,16 +1,14 @@
 <template>
     <div class="main-container">
-        <main-content-comp class="main-content-container" />
+        <main-content class="main-content-container" />
         <main-side class="main-side-container"></main-side>
     </div>
 
 </template>
 
 <script>
-import MainContentComp from "@/components/MainContentComp.vue";
-import MainSide from "@/components/MainSide.vue";
 export default {
-    components: { MainContentComp, MainSide }
+
 }
 </script>
 
