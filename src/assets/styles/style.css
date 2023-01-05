@@ -1,5 +1,122 @@
 @import "null.css";
-@import "style.scss";
 
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
+.post-item:nth-child(odd) .post_title::after, .post-item:nth-child(even) .post_title::after {
+  content: "";
+  display: block;
+}
 
+.post-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 10px #1e1e1f solid;
+  position: relative;
+  padding: 10px;
+  width: 100%;
+  height: 100%;
+}
+.post-item:nth-child(even) {
+  background-color: #14276f;
+  color: #e3e3ec;
+}
+.post-item:nth-child(even) .post_title::after {
+  width: 30%;
+  height: 2px;
+  background: #e3e3ec;
+  margin: 1em 0 0 0;
+}
+.post-item:nth-child(odd) {
+  background-color: #e3e3ec;
+  color: #14276f;
+}
+.post-item:nth-child(odd) .post_title::after {
+  width: 30%;
+  height: 2px;
+  background: #14276f;
+  margin: 1em 0 0 0;
+}
+@media screen and (min-width: 1200px) {
+  .post-item:not(:first-child) {
+    flex-direction: column;
+  }
+}
+.post-item:first-child .post__img {
+  height: 100%;
+}
+.post-item .post__img {
+  flex: 0 1 33.333%;
+}
+@media screen and (min-width: 550px) {
+  .post-item .post__date {
+    font-weight: 700;
+    font-size: 1.5rem;
+    transform: rotate(-90deg);
+  }
+}
+
+.post__img {
+  width: 100%;
+  min-height: 180px;
+  position: relative;
+}
+.post__img img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.post__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  line-height: 1.5;
+}
+
+.post_title {
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 1.25;
+}
+.post_title:hover {
+  cursor: pointer;
+}
+
+.post_description {
+  padding: 10px 0 0 0;
+}
+
+.post__icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 4em;
+  height: 4em;
+  background-color: #8b8b93;
+  color: #e3e3ec;
+  opacity: 0.5;
+  text-align: center;
+}
+
+@media screen and (max-width: 550px) {
+  .post-item {
+    flex-direction: column;
+  }
+  .post__content {
+    flex-direction: column;
+  }
+  .post__date {
+    width: 100%;
+    justify-self: flex-start;
+  }
+}
+body {
+  font-family: "IBM Plex Sans, Arial, Helvetica, sans-serif";
+}/*# sourceMappingURL=style.css.map */
