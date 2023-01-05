@@ -17,7 +17,7 @@
               v-model.trim="searchText"
               ref="searchinput"
               @input="$store.commit('search/setSearchText', searchText)"
-              @blur="isSearchActive = !isSearchActive"
+              @blur="clearCloseSearch"
               placeholder="Search..."
             />
           </transition>
@@ -51,6 +51,10 @@ export default {
     },
     showMobileMenu(e) {
       this.isMobileMenu = !this.isMobileMenu;
+    },
+    clearCloseSearch() {
+      this.searchText = "";
+      this.isSearchActive = !this.isSearchActive;
     },
   },
   watch: {
