@@ -1,7 +1,10 @@
 <template>
   <div>
     <div class="burger">
-      <div class="drop-down-menu-mobile-button" @click="$emit('showBurger', $event.target.value)">
+      <div
+        class="drop-down-menu-mobile-button"
+        @click="$emit('showBurger', $event.target.value)"
+      >
         <div :class="{ 'burger-rotate-positive': show }"></div>
         <div v-show="!show"></div>
         <div :class="{ 'burger-rotate-negative': show }"></div>
@@ -18,7 +21,7 @@
 <script>
 export default {
   name: "vBurgerMenu",
-  emits: ['showBurger'],
+  emits: ["showBurger"],
   props: {
     show: {
       type: Boolean,
