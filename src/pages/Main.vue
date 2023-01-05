@@ -18,6 +18,8 @@ export default {};
 }
 
 .main-content-container {
+  display: flex;
+  flex-direction: column;
   position: relative;
   padding: 0 0 0 2em;
   margin: 0 0 10px 0;

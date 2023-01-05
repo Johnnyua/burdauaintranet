@@ -7,7 +7,7 @@
         <v-burger-menu
           class="navbar-mobile"
           :show="isMobileMenu"
-          @click="showMobileMenu"
+          @showBurger="showMobileMenu"
         />
         <div class="lang-search-container">
           <my-search @click="changeSearch" />
@@ -17,10 +17,11 @@
               v-model.trim="searchText"
               ref="searchinput"
               @input="$store.commit('search/setSearchText', searchText)"
+              @blur="isSearchActive = !isSearchActive"
               placeholder="Search..."
             />
           </transition>
-          <v-lang />
+          <v-lang v-show="!isSearchActive" />
         </div>
       </div>
     </div>
@@ -48,7 +49,7 @@ export default {
         this.searchText = "";
       }
     },
-    showMobileMenu() {
+    showMobileMenu(e) {
       this.isMobileMenu = !this.isMobileMenu;
     },
   },
@@ -81,6 +82,7 @@ export default {
 
 .header__logo {
   flex: 1 1 33.333%;
+  align-self: flex-start;
   max-width: 270px;
 }
 
@@ -97,10 +99,12 @@ export default {
   .navbar-mobile {
     @include dflex(flex-end, center);
   }
+
   .navbar-container {
     display: none;
   }
 }
+
 .lang-search-container {
   @include dflex(space-between, center);
   background-color: $colorgrey;

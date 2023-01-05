@@ -1,14 +1,8 @@
 <template>
   <section class="main-content__list">
     <transition-group name="list">
-      <news-item
-        class="list__items"
-        :classObject="classObject"
-        v-for="post in posts"
-        :key="post.url"
-        :post="post"
-        @openPost="$emit('openPost', post)"
-      >
+      <news-item class="list__items" :classObject="classObject" v-for="post in posts" :key="post.url" :post="post"
+        @openPost="$emit('openPost', post)">
         <template #item-icon>
           <div style="opacity: 1">Open</div>
         </template>
@@ -28,7 +22,7 @@ export default {
     },
     classObject: {
       type: Object,
-      default: () => {},
+      default: () => { },
     },
   },
 };
@@ -36,7 +30,9 @@ export default {
 
 <style lang="scss" scoped>
 .main-content__list {
+  display: grid;
   grid-template: auto / 1fr;
+  flex: 1 1 auto;
   //grid-template-areas: 'postbig' 'postnormal' 'postnormal1';
 }
 
@@ -81,6 +77,7 @@ export default {
 .list-enter-active {
   transition: all 2s ease-in-out;
 }
+
 .list-leave-active {
   transition: all 1s ease-in-out;
 }
@@ -88,6 +85,7 @@ export default {
 .list-enter-from {
   transform: translateX(1000px);
 }
+
 .list-leave-to {
   opacity: 0;
   transform: translateY(-100px);
